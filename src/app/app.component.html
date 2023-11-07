@@ -4,21 +4,22 @@
 </div>
 
 
-<div class="nav-bar2">
+<div class="nav-bar2" *ngIf="isLoggedIn">
 
   <nav class="elements">
-        <a href="/home" class="nav-link" routerLink="home">Home </a>
       
-        <a href="/user" class="nav-link" *ngIf="isLoggedIn" routerLink="user">User</a>
 
-        <a href="/register" class="nav-link" *ngIf="!isLoggedIn" routerLink="register">Sign Up</a>
-        <a href="/login" class="nav-link" *ngIf="!isLoggedIn" routerLink="login">Login</a>
+        <a href="/register" class="nav-link"  *ngIf="isAllowed('register')" routerLink="register">Registar utilizador</a>
+        <a href="/calendar" class="nav-link" *ngIf="isAllowed('calendar')" routerLink="calendar">Calendario</a>
 
-        <a href="/profile" class="nav-link" *ngIf="isLoggedIn" routerLink="profile">{{ username }}</a>
+        <a href="/profile" class="nav-link" *ngIf="isAllowed('profile')" routerLink="profile">{{ username }}</a>
+        <a href="/files" class="nav-link" *ngIf="isAllowed('files')" routerLink="files">Upload e listagem de ficheiros</a>
+
 
         <a href class="nav-link" *ngIf="isLoggedIn" (click)="logout()">LogOut</a>
   </nav>
 </div>
+
   <div class="container">
     <router-outlet></router-outlet>
   </div>

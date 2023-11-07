@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { StorageService } from './services/storage.service';
-import { AuthService } from './services/auth.service';
+import { StorageService } from './services/storage/storage.service';
+import { AuthService } from './services/auth/auth.service';
 import { SystemEventService } from './systemEvent/systemEvent.service';
+import { RoleAuth } from './auth/role-auth.component';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -21,7 +22,8 @@ export class AppComponent {
   constructor(
     private storageService: StorageService,
     private authService: AuthService,
-    private systemEventService: SystemEventService
+    private systemEventService: SystemEventService,
+    private roleAuth: RoleAuth
     
   ) {}
 
@@ -32,8 +34,6 @@ export class AppComponent {
       const user = this.storageService.getUser();
       this.roles = user.roles;
 
-      this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
-      this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
 
       this.username = user.username;
     }
@@ -42,6 +42,18 @@ export class AppComponent {
       this.logout();
     });
   }
+  isManager(): boolean{
+    return this.roles.includes('MANAGER');
+  }
+  isEmployee(): boolean{
+    return this.roles.includes('EMPLOYEE');
+  }
+  isAllowed(url: string){
+    return this.storageService.isLoggedIn() && this.roleAuth.roleAccesses(this.storageService.getRole(), url)
+
+
+  }
+
 
   logout(): void {
     this.authService.logout().subscribe({
