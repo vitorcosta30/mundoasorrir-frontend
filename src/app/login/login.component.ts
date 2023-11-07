@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../services/auth.service';
-import { StorageService } from '../services/storage.service';
+import { AuthService } from '../services/auth/auth.service';
+import { StorageService } from '../services/storage/storage.service';
 
 @Component({
     selector: 'app-login',
@@ -14,6 +14,7 @@ import { StorageService } from '../services/storage.service';
       };
       isLoggedIn = false;
       isLoginFailed = false;
+      
       errorMessage = '';
       roles: string[] = [];
       constructor(private authService: AuthService, private storageService: StorageService) { }
@@ -42,6 +43,12 @@ import { StorageService } from '../services/storage.service';
             this.isLoginFailed = true;
           }
         });
+      }
+      getIsLoggedIn(): boolean{
+        return this.isLoggedIn;
+      }
+      getRole(): String{
+        return this.roles[0];
       }
     
       reloadPage(): void {
