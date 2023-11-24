@@ -18,7 +18,7 @@ export class RoleAuth {
         return  url == 'profile'|| url == 'calendar';
     }
     managerAccess(url: string):boolean{
-        return url =='register' || url == 'profile'|| url == 'calendar' || url == 'files';
+        return url =='register' || url == 'profile'|| url == 'calendar' || url == 'files' || url == 'createEvent' || url == 'users' || url == 'createUserGroup' || url == 'event-details' || url == 'createVacationRequest' || url == 'pendingVacationRequests' || url == 'activeVacations';
     }
 
 }

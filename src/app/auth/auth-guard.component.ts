@@ -14,7 +14,7 @@ export class AuthGuard implements CanActivate {
     ) { }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        if (this.storageService.isLoggedIn()) {
+        if (this.storageService.isLogged()) {
             this.role  = this.storageService.getRole();
             this.isAllowed = this.roleAuth.roleAccesses(this.role, route.url[0].path);
             if(this.isAllowed){
