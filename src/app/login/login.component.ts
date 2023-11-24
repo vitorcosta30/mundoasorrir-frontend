@@ -19,12 +19,29 @@ import { StorageService } from '../services/storage/storage.service';
       roles: string[] = [];
       constructor(private authService: AuthService, private storageService: StorageService) { }
 
-      ngOnInit(): void {
-        if (this.storageService.isLoggedIn()) {
+     ngOnInit(): void {
+
+
+      this.authService.isLoggedIn().subscribe(res => {
+        if(res == true){
           this.isLoggedIn = true;
-          this.roles = this.storageService.getUser().roles;
+          this.authService.getUser().subscribe(usr => {
+            this.storageService.saveUser(usr);
+            this.roles = this.storageService.getUser().roles;
+          })
+  
+        }else{
+          this.isLoggedIn = false;
+          this.storageService.clean();
+        }  
+      })
+        /*
+          if (this.storageService.isLoggedIn()) {
+            this.isLoggedIn = true;
+            this.roles = this.storageService.getUser().roles;
+          }*/
         }
-      }
+      
     
       onSubmit(): void {
         const { username, password } = this.form;
