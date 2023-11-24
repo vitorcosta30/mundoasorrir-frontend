@@ -1,0 +1,22 @@
+<div class="user">
+
+
+<div class="user-list">
+    <h2>Lista de utilizadores</h2>
+
+    <ul class="users">
+
+
+    <li *ngFor="let user of users">
+        <button type="button" name = "user-info">
+            <span class = "id">{{user.id}}</span>
+            <span class = "att">{{user.username}}</span>
+            <span class = "att">{{user.email}}</span>
+            <span class = "att">{{user.role}}</span>
+            <a href="/users/{{user.username}}" >Agenda</a>
+
+        </button>
+    </li>
+</ul>
+</div>
+</div>
