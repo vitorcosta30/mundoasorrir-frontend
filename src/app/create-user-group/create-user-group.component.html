@@ -1,0 +1,84 @@
+<div class="col-md-12">
+    <div class="card card-container">
+
+      <form
+        *ngIf="!isSuccessful"
+        name="form"
+        #f="ngForm"
+        novalidate
+      >
+        <div class="form-group">
+          <label for="username">Group name</label>
+          <input
+            type="text"
+            class="form-control"
+            name="groupName"
+            [(ngModel)]="groupName"
+            required
+            minlength="3"
+            maxlength="20"
+          />
+
+        </div>
+   
+        <div class="form-group">
+          <label for="groupDesignation">Designação do grupo</label>
+          <input
+            type="text"
+            class="form-control"
+            name="groupDesignation"
+            [(ngModel)]="groupDesignation"
+            required
+            minlength="6"
+          />
+
+        </div>
+  
+  
+        <div class="form-group">
+            <h3>Utilizadores</h3>
+            <div class="form-group" *ngFor="let user of users; let i = index; ">
+              <label for="username">Nome de utilizador</label>
+              <select
+                type="text"
+                [(ngModel)]="users[i]"
+          
+                class="form-control"
+                name="username"
+                value="{{user}}"
+              >
+          
+              <option *ngFor="let user of availableUsers" value="{{user.username}}">{{user.username}}</option>
+              </select>
+              <br>
+          
+            </div>
+            <br>
+
+            <button class="btn btn-primary btn-block" (click)="addUser()">
+              Adicionar Utilizador
+            </button>
+          
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+  
+  
+        <div class="form-group">
+          <button class="btn btn-primary btn-block" (click)="onSubmit()">Criar Grupo</button>
+        </div>
+  
+        <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+          Signup failed!<br />{{ errorMessage }}
+        </div>
+      </form>
+  
+      <div class="alert alert-success" *ngIf="isSuccessful">
+        Your registration is successful!
+      </div>
+    </div>
+  </div>
