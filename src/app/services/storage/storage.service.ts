@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { AuthService } from '../auth/auth.service';
 
 const USER_KEY = 'auth-user';
 const TOKEN_KEY = 'mundoasorrir';
@@ -8,7 +9,7 @@ const TOKEN_KEY = 'mundoasorrir';
   providedIn: 'root'
 })
 export class StorageService {
-  constructor() {}
+  constructor(private authService : AuthService) {}
 
   clean(): void {
     window.sessionStorage.clear();
@@ -40,10 +41,37 @@ export class StorageService {
 
   public isLoggedIn(): boolean {
     const user = window.sessionStorage.getItem(USER_KEY);
+    let isLoggedIn : boolean = false;
+    this.authService.isLoggedIn().subscribe(res => {
+      isLoggedIn = res;
+      if(res == true){
+        isLoggedIn = true;
+        this.authService.getUser().subscribe(usr => {
+          this.saveUser(usr);
+        })
+
+      }else{
+        isLoggedIn = false;
+        this.clean();
+
+      }
+      return isLoggedIn;
+
+    })
+
+    return this.isLogged();
+    
+
+
+  }
+  public isLogged(): boolean{
+    const user = window.sessionStorage.getItem(USER_KEY);
+
     if (user) {
       return true;
     }
 
     return false;
+
   }
 }
