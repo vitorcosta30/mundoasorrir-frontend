@@ -28,7 +28,22 @@ export class AppComponent {
   ) {}
 
   ngOnInit(): void {
-    this.isLoggedIn = this.storageService.isLoggedIn();
+    this.authService.isLoggedIn().subscribe(res => {
+      if(res == true){
+        this.isLoggedIn = true;
+        this.authService.getUser().subscribe(usr => {
+          this.storageService.saveUser(usr);
+          const user = this.storageService.getUser();
+          this.username = user.username;
+          this.roles = user.roles;
+        })
+
+      }else{
+        this.isLoggedIn = false;
+        this.storageService.clean();
+      }  
+    })
+    /*
 
     if (this.isLoggedIn) {
       const user = this.storageService.getUser();
@@ -36,7 +51,7 @@ export class AppComponent {
 
 
       this.username = user.username;
-    }
+    }*/
 
     this.eventBusSub = this.systemEventService.on('logout', () => {
       this.logout();
@@ -49,7 +64,7 @@ export class AppComponent {
     return this.roles.includes('EMPLOYEE');
   }
   isAllowed(url: string){
-    return this.storageService.isLoggedIn() && this.roleAuth.roleAccesses(this.storageService.getRole(), url)
+    return this.storageService.isLogged() && this.roleAuth.roleAccesses(this.storageService.getRole(), url)
 
 
   }

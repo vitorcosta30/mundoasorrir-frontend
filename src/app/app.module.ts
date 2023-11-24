@@ -12,6 +12,7 @@ import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { httpInterceptorProviders } from './interceptor/http.interceptor';
 import { FileUploadComponent } from './file-upload/file-upload.component';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 
 import { MatCardModule } from '@angular/material/card';
@@ -23,7 +24,19 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatListModule } from '@angular/material/list';
 
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-
+import { CreateEventComponent } from './create-event/create-event.component';
+import localePt from '@angular/common/locales/pt';
+import { registerLocaleData } from '@angular/common';
+import { UserGroupsComponent } from './user-groups/user-groups.component';
+import { AttendanceComponent } from './attendance/attendance.component';
+import { UserComponent } from './user/user.component';
+import { UserDetailsComponent } from './user/userDetails/user-details.component';
+import { CreateUserGroupComponent } from './create-user-group/create-user-group.component';
+import { EventDetailsComponent } from './event-details/event-details.component';
+import { VacationComponent } from './vacation/vacation.component';
+import { PendingVacationRequestsComponent } from './pending-vacation-requests/pending-vacation-requests.component';
+import { FileDisplayComponent } from './file-display/file-display.component';
+import { ActiveVacationsComponent } from './active-vacations/active-vacations.component';
 const materialModules = [
   MatCardModule,
   MatToolbarModule,
@@ -33,6 +46,7 @@ const materialModules = [
   MatProgressBarModule,
   MatListModule
 ];
+registerLocaleData(localePt);
 
 @NgModule({
   declarations: [
@@ -41,7 +55,18 @@ const materialModules = [
     LoginComponent,
     ProfileComponent,
     CalendarComponent,
-    FileUploadComponent
+    FileUploadComponent,
+    CreateEventComponent,
+    UserGroupsComponent,
+    AttendanceComponent,
+    UserComponent,
+    UserDetailsComponent,
+    CreateUserGroupComponent,
+    EventDetailsComponent,
+    VacationComponent,
+    PendingVacationRequestsComponent,
+    FileDisplayComponent,
+    ActiveVacationsComponent
 
 
   ],
@@ -50,6 +75,8 @@ const materialModules = [
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    NgMultiSelectDropDownModule.forRoot(),
+
     CalendarModule.forRoot({
       provide: DateAdapter,
       useFactory: adapterFactory,
