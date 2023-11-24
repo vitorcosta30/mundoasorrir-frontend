@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 
 const AUTH_API = 'http://localhost:9000/api/auth/';
 
+const USER_API = 'http://localhost:9000/api/users/';
+
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
@@ -37,9 +39,18 @@ export class AuthService {
       httpOptions
     );
   }
+  getRoles(): Observable<any>{
+    return this.http.get(USER_API + 'getRoles',{}).pipe();
+  }
 
   logout(): Observable<any> {
     return this.http.post(AUTH_API + 'signout', { }, httpOptions);
+  }
+  getUser(): Observable<any> {
+    return this.http.get(AUTH_API + 'getUser', { }).pipe();
+  }
+  isLoggedIn(): Observable<any> {
+    return this.http.get(AUTH_API + 'isLoggedIn', { }).pipe();
   }
   refreshToken() {
     return this.http.post(AUTH_API + 'refreshtoken', { }, httpOptions);
