@@ -1,0 +1,29 @@
+
+<div class="user-list">
+    <h2>Lista de utilizadores envolvidos</h2>
+
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>username</th>
+                <th>Email</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of enrolledUser">
+                <td>{{user.id}}</td>
+                <td>{{user.username}}</td>
+                <td>{{user.email}}</td>
+                <td> <a href="/users/{{user.username}}" >Agenda</a></td>
+            </tr>
+            <!-- Add more rows as needed -->
+        </tbody>
+</table>
+
+
+</div>
+
+
