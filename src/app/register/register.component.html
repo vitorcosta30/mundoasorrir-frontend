@@ -77,16 +77,19 @@
 
       <div class="form-group">
         <label for="role">Role</label>
-        <input
-          type="text"
-          class="form-control"
-          name="role"
-          [(ngModel)]="form.role"
-          required
-          minlength="6"
-          #role="ngModel"
-          [ngClass]="{ 'is-invalid': f.submitted && role.errors }"
-        />
+
+
+        <select name="roles" id="roles"          type="text"
+        class="form-control"
+        name="role"
+        [(ngModel)]="form.role"
+        required
+        minlength="6"
+        #role="ngModel"
+        [ngClass]="{ 'is-invalid': f.submitted && role.errors }">
+          <option *ngFor="let role of roles" value="{{role.name}}">{{role.name}}</option>
+
+        </select>
         <div class="invalid-feedback" *ngIf="role.errors && f.submitted">
           <div *ngIf="role.errors['required']">Role is required</div>
 
