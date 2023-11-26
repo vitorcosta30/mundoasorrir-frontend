@@ -42,7 +42,6 @@ export class FileUploadComponent implements OnInit {
   ngOnInit(): void {
     this.getUsers();
     this.getGroups();
-    this.fileInfos = this.uploadService.getFiles();
   }
 
   getUsers(): void{
