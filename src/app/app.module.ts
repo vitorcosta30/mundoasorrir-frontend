@@ -37,6 +37,10 @@ import { VacationComponent } from './vacation/vacation.component';
 import { PendingVacationRequestsComponent } from './pending-vacation-requests/pending-vacation-requests.component';
 import { FileDisplayComponent } from './file-display/file-display.component';
 import { ActiveVacationsComponent } from './active-vacations/active-vacations.component';
+import { ListFilesComponent } from './list-files/list-files.component';
+import { GroupListComponent } from './group-list/group-list.component';
+import { GroupDetailsComponent } from './group-details/group-details.component';
+import { AttendanceSheetComponent } from './attendance-sheet/attendance-sheet.component';
 const materialModules = [
   MatCardModule,
   MatToolbarModule,
@@ -66,7 +70,11 @@ registerLocaleData(localePt);
     VacationComponent,
     PendingVacationRequestsComponent,
     FileDisplayComponent,
-    ActiveVacationsComponent
+    ActiveVacationsComponent,
+    ListFilesComponent,
+    GroupListComponent,
+    GroupDetailsComponent,
+    AttendanceSheetComponent
 
 
   ],

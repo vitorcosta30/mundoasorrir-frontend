@@ -1,4 +1,5 @@
 <div id="app" class="nav-bar">
+
   <img src="../assets/logoPrincipal.svg" height="152px"width="113px">
 
 </div>
@@ -7,13 +8,67 @@
 <div class="nav-bar2" *ngIf="isLoggedIn">
 
   <nav class="elements">
-      
+        <a href="/calendar" class="nav-link"   (click)="check()" *ngIf="isAllowed('calendar')" routerLink="calendar">Meu Calendario</a>
+        <a href="/profile" class="nav-link" (click)="check()" *ngIf="isAllowed('profile')" routerLink="profile">{{ username }}</a>
 
-        <a href="/register" class="nav-link"  *ngIf="isAllowed('register')" routerLink="register">Registar utilizador</a>
-        <a href="/calendar" class="nav-link" *ngIf="isAllowed('calendar')" routerLink="calendar">Calendario</a>
 
-        <a href="/profile" class="nav-link" *ngIf="isAllowed('profile')" routerLink="profile">{{ username }}</a>
-        <a href="/files" class="nav-link" *ngIf="isAllowed('files')" routerLink="files">Upload e listagem de ficheiros</a>
+
+
+        <div class="dropdown" *ngIf="isAllowed('markPresences')">
+          <button class="dropbtn">Presenças</button>
+          <div class="dropdown-content">
+            <a href="/markPresences" class="nav-link" (click)="check()" *ngIf="isAllowed('markPresences')" routerLink="markPresences">Marcar presenças</a>
+            <a href="/attendanceSheet" class="nav-link" (click)="check()" *ngIf="isAllowed('attendanceSheet')" routerLink="attendanceSheet">Folha de presenças</a>
+
+          
+          
+          </div>
+        </div>
+
+
+
+
+        <div class="dropdown" *ngIf="isAllowed('createUserGroup')">
+        <button class="dropbtn">Grupos</button>
+          <div class="dropdown-content">
+            <a href="/createUserGroup" class="nav-link" (click)="check()" *ngIf="isAllowed('createUserGroup')" routerLink="createUserGroup">Criar grupo</a>
+          </div>
+        </div>
+
+
+
+
+        <div class="dropdown" *ngIf="isAllowed('users')">
+          <button class="dropbtn">Gestão de utilizadores</button>
+            <div class="dropdown-content">
+              <a href="/users" class="nav-link" (click)="check()" *ngIf="isAllowed('users')" routerLink="users">Listar utilizadores</a>
+              <a href="/register" class="nav-link" (click)="check()" *ngIf="isAllowed('register')" routerLink="register">Registar utilizadores</a>
+            </div>
+          </div>
+
+
+
+          <div class="dropdown" *ngIf="isAllowed('users')">
+            <button class="dropbtn">Ficheiros</button>
+              <div class="dropdown-content">
+                <a href="/files" class="nav-link" (click)="check()" *ngIf="isAllowed('files')" routerLink="files">Upload de ficheiros</a>
+
+                <a href="/myFiles" class="nav-link" (click)="check()" *ngIf="isAllowed('myFiles')" routerLink="myFiles">Meus ficheiros</a>
+              </div>
+          </div>
+
+
+          <div class="dropdown" *ngIf="isAllowed('createVacationRequest')">
+            <button class="dropbtn">Férias</button>
+              <div class="dropdown-content">
+                <a href="/createVacationRequest" class="nav-link" (click)="check()" *ngIf="isAllowed('createVacationRequest')" routerLink="createVacationRequest">Criar pedido de férias</a>
+                <a href="/pendingVacationRequests" class="nav-link" (click)="check()" *ngIf="isAllowed('pendingVacationRequests')" routerLink="pendingVacationRequests">Pedidos de férias pendentes</a>
+                <a href="/activeVacations" class="nav-link" (click)="check()" *ngIf="isAllowed('activeVacations')" routerLink="activeVacations">Utilizadores de férias</a>
+
+              
+              </div>
+          </div>
+
 
 
         <a href class="nav-link" *ngIf="isLoggedIn" (click)="logout()">LogOut</a>

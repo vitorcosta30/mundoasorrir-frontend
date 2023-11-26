@@ -4,6 +4,8 @@ import { StorageService } from './services/storage/storage.service';
 import { AuthService } from './services/auth/auth.service';
 import { SystemEventService } from './systemEvent/systemEvent.service';
 import { RoleAuth } from './auth/role-auth.component';
+import {Location} from '@angular/common';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -20,6 +22,7 @@ export class AppComponent {
   eventBusSub?: Subscription;
 
   constructor(
+    private location: Location,
     private storageService: StorageService,
     private authService: AuthService,
     private systemEventService: SystemEventService,
@@ -28,6 +31,28 @@ export class AppComponent {
   ) {}
 
   ngOnInit(): void {
+    this.check();
+
+    /*
+
+    if (this.isLoggedIn) {
+      const user = this.storageService.getUser();
+      this.roles = user.roles;
+
+
+      this.username = user.username;
+    }*/
+
+    this.eventBusSub = this.systemEventService.on('logout', () => {
+      this.logout();
+    });
+  }
+
+  backClicked() {
+    this.location.back();
+  }
+
+  check(): void{
     this.authService.isLoggedIn().subscribe(res => {
       if(res == true){
         this.isLoggedIn = true;
@@ -43,19 +68,6 @@ export class AppComponent {
         this.storageService.clean();
       }  
     })
-    /*
-
-    if (this.isLoggedIn) {
-      const user = this.storageService.getUser();
-      this.roles = user.roles;
-
-
-      this.username = user.username;
-    }*/
-
-    this.eventBusSub = this.systemEventService.on('logout', () => {
-      this.logout();
-    });
   }
   isManager(): boolean{
     return this.roles.includes('MANAGER');
@@ -75,6 +87,7 @@ export class AppComponent {
       next: res => {
         console.log(res);
         this.storageService.clean();
+        //this.check()
 
         window.location.reload();
       },
