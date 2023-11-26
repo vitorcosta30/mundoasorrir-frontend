@@ -1,142 +1,26 @@
-.user {
-    display: flex;
-  }
-  
-  .user h2 {
-    margin-bottom: .8em;
-  }
-  
-  .user li {
-    display: flex;
-    margin-bottom: .8em;
-  }
-  
-  .user button {
-    display: flex;
-    background-color: #EEE;
-    position: relative;
-    left: 0;
-    border-radius: 4px;
-    height: 3.8em;
-  }
-  
-  .user button:disabled{
-    cursor: not-allowed;
-    opacity: 0.5;
-  }
-  
-  .user button:hover {
-    color: #2c3a41;
-    background-color: #e6e6e6;
-    left: .1em;
-  }
-  
-  .user button:active {
-    background-color: #525252;
-    color: #fafafa;
-  }
-  
-  .user button.selected {
-    background-color: black;
-    color: white;
-  }
-  
-  .user button.selected:hover {
-    background-color: #505050;
-    color: white;
-  }
-  
-  .user button.selected:active {
-    background-color: black;
-    color: white;
-  }
-  
-  .delivery-list {
-    margin: 7em;
-    
-  }
-  
-  .delivery-list button {
-    flex: 1;
-    align-items: stretch;
-  }
-  
-  .delivery-list .id {
-    font-weight: bold;
-    padding: 0em 2em;
-    align-self: center;
-    min-width: 6em;
-  }
-  
-  .delivery-list .att {
-    align-self: center;
-    padding: 1em;
-    min-width: 6em;
-  }
-  
-  .menu {
-    margin: 3em;
-  }
-  
-  .menu h2 {
-    font-size: xxx-large;
-  }
-  
-  .menu button {
-    margin-bottom: 2em;
-    justify-content: center;
-    align-items: center;
-    height: 7em;
-    width: 15em;
-    font-size: large;
-  }
-  
-  
-  .filterMenu button {
-  
-    margin-bottom: 2em;
-    justify-content: center;
-    align-items: center;
-    height: 3em;
-    width: 7em;
-    font-size: large;
-  }
-  .sidenav {
-    margin-top: 50px;
-  
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #5BBF3F;
-    opacity:0.4;
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 60px;
-  }
-  
-  .sidenav a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 20px;
-    color: #000;
-    display: block;
-    transition: 0.3s;
-  }
-  
-  .sidenav a:hover {
-    color: #505050;
-  }
-  .sidenav h3{
-    text-align: center;}
-  
-  .sidenav .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
-  }
-  
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #3369b9;
+  color: white;
+}
+
+tr:hover {
+  background-color: #f5f5f5;
+}

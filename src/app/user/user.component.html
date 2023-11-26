@@ -1,22 +1,24 @@
 <div class="user">
 
 
-<div class="user-list">
-    <h2>Lista de utilizadores</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>username</th>
+                <th>Email</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users">
+                <td>{{user.id}}</td>
+                <td>{{user.username}}</td>
+                <td>{{user.email}}</td>
+                <td> <a href="/users/{{user.username}}" >Agenda</a></td>
+            </tr>
+            <!-- Add more rows as needed -->
+        </tbody>
+</table>
 
-    <ul class="users">
-
-
-    <li *ngFor="let user of users">
-        <button type="button" name = "user-info">
-            <span class = "id">{{user.id}}</span>
-            <span class = "att">{{user.username}}</span>
-            <span class = "att">{{user.email}}</span>
-            <span class = "att">{{user.role}}</span>
-            <a href="/users/{{user.username}}" >Agenda</a>
-
-        </button>
-    </li>
-</ul>
-</div>
 </div>
