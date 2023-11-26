@@ -39,7 +39,7 @@ export class CalendarComponent  implements OnInit{
       this.debugString = JSON.stringify(this.eventsList);
       for(let i = 0;  i < this.eventsList.length; i++){
         let event : CalendarEventDTO = this.eventsList[i];
-        let eventCalendar : CalendarEvent = {title: event.title,start:new Date(event.start), end:new Date(event.end),id : event.id};
+        let eventCalendar : CalendarEvent = {title: event.description,start:new Date(event.start), end:new Date(event.end),id : event.id};
         if(event.type == 'MISSION') {
           eventCalendar.color = colors.red;
           eventCalendar.allDay = true;
