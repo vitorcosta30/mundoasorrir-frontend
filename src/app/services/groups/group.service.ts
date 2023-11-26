@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpRequest, HttpEvent, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from 'src/enviroment/enviroment';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class GroupService {
-  private baseUrl = 'http://localhost:9000';
+  private baseUrl = environment.apiURL ;
 
   constructor(private http: HttpClient) { }
 
@@ -23,12 +24,12 @@ export class GroupService {
     }
 
 
-    return this.http.post(`${this.baseUrl}/api/userGroup/createGroup`,formData);
+    return this.http.post(`${this.baseUrl}userGroup/createGroup`,formData);
 
   }
 
   getGroupsSimple(): Observable<any>{
-    return this.http.get(`${this.baseUrl}/api/userGroup/getGroupsSimple`)
+    return this.http.get(`${this.baseUrl}userGroup/getGroupsSimple`)
   }
 
 

@@ -4,19 +4,20 @@ import { Observable } from 'rxjs';
 import { CalendarEvent } from 'angular-calendar';
 import { CalendarEventDTO } from 'src/app/calendar/calendar.model';
 import { EventModel } from 'src/app/create-event/event.model';
+import { environment } from 'src/enviroment/enviroment';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class CalendarService {
-  private baseUrl = 'http://localhost:9000';
+  private baseUrl = environment.apiURL ;
 
   constructor(private http: HttpClient) { }
 
   getEvents(): Observable<any> {
 
-    return this.http.get<any>(`${this.baseUrl}/api/events/getEvents`,{
+    return this.http.get<any>(`${this.baseUrl}events/getEvents`,{
 
     }).pipe();
 
@@ -24,18 +25,18 @@ export class CalendarService {
   }
 
   getUserEvents(username: string): Observable<any>{
-    return this.http.get<any>(`${this.baseUrl}/api/events/getUserEvents/`+username,{}).pipe();
+    return this.http.get<any>(`${this.baseUrl}events/getUserEvents/`+username,{}).pipe();
   }
   getEventDetails(eventId: string): Observable<any>{
-    return this.http.get<any>(`${this.baseUrl}/api/events/getEvent/`+eventId,{}).pipe();
+    return this.http.get<any>(`${this.baseUrl}events/getEvent/`+eventId,{}).pipe();
   }
   getEventMembers(eventId: string): Observable<any>{
-    return this.http.get<any>(`${this.baseUrl}/api/events/getEventMembers/`+eventId,{}).pipe();
+    return this.http.get<any>(`${this.baseUrl}events/getEventMembers/`+eventId,{}).pipe();
   }
 
 
   getEventTypes(): Observable<any>{
-    return this.http.get<any>(`${this.baseUrl}/api/events/getEventType`,{}).pipe();
+    return this.http.get<any>(`${this.baseUrl}events/getEventType`,{}).pipe();
 
   }
 
@@ -58,7 +59,7 @@ export class CalendarService {
 
 
 
-    return this.http.post<any>(`${this.baseUrl}/api/events/createEvent`, formData);
+    return this.http.post<any>(`${this.baseUrl}events/createEvent`, formData);
 
   }
 

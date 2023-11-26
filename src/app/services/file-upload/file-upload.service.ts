@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpRequest, HttpEvent, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from 'src/enviroment/enviroment';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class FileUploadService {
-  private baseUrl = 'http://localhost:9000';
+  private baseUrl = environment.apiURL;
 
   constructor(private http: HttpClient) { }
 
@@ -23,7 +24,7 @@ export class FileUploadService {
       formData.append('groups', groups[i]);
     }
 
-    return this.http.post(`${this.baseUrl}/api/files/upload`,formData);
+    return this.http.post(`${this.baseUrl}files/upload`,formData);
     /** 
 
     const req = new HttpRequest('POST', `${this.baseUrl}/api/files/upload`, formData,  {
@@ -35,7 +36,7 @@ export class FileUploadService {
   }
 
   getFiles(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/api/files/files`,{
+    return this.http.get(`${this.baseUrl}files/files`,{
 
     } );
   }
