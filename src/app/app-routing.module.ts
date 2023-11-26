@@ -16,6 +16,9 @@ import { VacationComponent } from './vacation/vacation.component';
 import { PendingVacationRequestsComponent } from './pending-vacation-requests/pending-vacation-requests.component';
 import { FileDisplayComponent } from './file-display/file-display.component';
 import { ActiveVacationsComponent } from './active-vacations/active-vacations.component';
+import { AttendanceComponent } from './attendance/attendance.component';
+import { ListFilesComponent } from './list-files/list-files.component';
+import { AttendanceSheetComponent } from './attendance-sheet/attendance-sheet.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent  },
@@ -33,7 +36,10 @@ const routes: Routes = [
   { path: 'pendingVacationRequests', component: PendingVacationRequestsComponent, canActivate: [AuthGuard]  },
   { path: 'files/:id', component: FileDisplayComponent, canActivate: [AuthGuard]  },
   { path: 'activeVacations', component: ActiveVacationsComponent, canActivate: [AuthGuard]  },
+  { path: 'myFiles', component: ListFilesComponent, canActivate: [AuthGuard]  },
+  { path: 'attendanceSheet', component: AttendanceSheetComponent, canActivate: [AuthGuard]  },
 
+  { path: 'markPresences', component: AttendanceComponent, canActivate: [AuthGuard]  },
 
 
   { path: '**', redirectTo: 'login' },
