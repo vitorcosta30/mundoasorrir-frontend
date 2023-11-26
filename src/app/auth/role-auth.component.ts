@@ -10,15 +10,23 @@ export class RoleAuth {
         if(role == 'MANAGER'){
             return this.managerAccess(url);
         }
+        if(role == 'DIRECTOR'){
+            return this.directorAccess(url);
+        }
+
 
         return false;
     }
 
     employeeAccess(url: string):boolean{
-        return  url == 'profile'|| url == 'calendar';
+        return  url == 'profile'|| url == 'calendar' || url == 'files' || url == 'event-details' || url == 'activeVacations' || url == 'createVacationRequest'|| url == 'users' || url == 'myFiles';
     }
     managerAccess(url: string):boolean{
-        return url =='register' || url == 'profile'|| url == 'calendar' || url == 'files' || url == 'createEvent' || url == 'users' || url == 'createUserGroup' || url == 'event-details' || url == 'createVacationRequest' || url == 'pendingVacationRequests' || url == 'activeVacations';
+        return this.employeeAccess(url) || url == 'markPresences' || url == 'pendingVacationRequests' || url == 'createUserGroup' || url == 'createEvent' || url =='attendanceSheet';
+    }
+
+    directorAccess(url: string): boolean{
+        return this.managerAccess(url) || url == 'register'
     }
 
 }
