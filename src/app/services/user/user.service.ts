@@ -34,5 +34,19 @@ export class UserService {
 
   }
 
+  deactivateAccount(username:string): Observable<any>{
+    const formData: FormData = new FormData();
+    formData.append('username',username);
+    return this.http.post<any>(USER_API  + 'deactivateAccount', formData);
+
+  }
+
+  activateAccount(username:string): Observable<any>{
+    const formData: FormData = new FormData();
+    formData.append('username',username);
+    return this.http.post<any>(USER_API  + 'activateAccount', formData);
+
+  }
+
 
 }

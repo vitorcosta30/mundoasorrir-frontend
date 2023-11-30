@@ -1,0 +1,34 @@
+<div class="user">
+
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>username</th>
+                <th>Email</th>
+                <th></th>
+                <th *ngIf="isDirector()"></th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users">
+                <td>{{user.id}}</td>
+                <td>{{user.username}}</td>
+                <td>{{user.email}}</td>
+                <td> <a href="/users/{{user.username}}" >Agenda</a></td>
+                <td *ngIf="isDirector()"> 
+                    <button id="activateButton" *ngIf="!user.active" class="btn btn-primary btn-block" (click)="activate(user.username)">
+                    Ativar
+                  </button>   
+                  <button *ngIf="user.active" id="deactivateButton" class="btn btn-primary btn-block" (click)="deactivate(user.username)">
+                    Desativar
+                  </button></td>
+
+            </tr>
+            <!-- Add more rows as needed -->
+        </tbody>
+</table>
+
+</div>

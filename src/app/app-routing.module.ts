@@ -1,24 +1,26 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { FileUploadComponent } from './file-upload/file-upload.component';
+import { FileUploadComponent } from './components/file/file-upload/file-upload.component';
 import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { ProfileComponent } from './profile/profile.component';
-import {CalendarComponent} from './calendar/calendar.component';
+import { RegisterComponent } from './components/user/register/register.component';
+import { ProfileComponent } from './components/user/profile/profile.component';
+import {CalendarComponent} from './components/calendar/calendar/calendar.component';
 import { AuthGuard } from './auth/auth-guard.component';
-import { CreateEventComponent} from './create-event/create-event.component';
-import { UserComponent } from './user/user.component';
-import { UserDetailsComponent } from './user/userDetails/user-details.component';
-import { CreateUserGroupComponent } from './create-user-group/create-user-group.component';
-import { EventDetailsComponent } from './event-details/event-details.component';
-import { VacationComponent } from './vacation/vacation.component';
-import { PendingVacationRequestsComponent } from './pending-vacation-requests/pending-vacation-requests.component';
-import { FileDisplayComponent } from './file-display/file-display.component';
-import { ActiveVacationsComponent } from './active-vacations/active-vacations.component';
-import { AttendanceComponent } from './attendance/attendance.component';
-import { ListFilesComponent } from './list-files/list-files.component';
-import { AttendanceSheetComponent } from './attendance-sheet/attendance-sheet.component';
+import { CreateEventComponent} from './components/calendar/create-event/create-event.component';
+import { UserComponent } from './components/user/user/user.component';
+import { UserDetailsComponent } from './components/user/userDetails/user-details.component';
+import { CreateUserGroupComponent } from './components/user-group/create-user-group/create-user-group.component';
+import { EventDetailsComponent } from './components/calendar/event-details/event-details.component';
+import { VacationComponent } from './components/vacation/vacation/vacation.component';
+import { PendingVacationRequestsComponent } from './components/vacation/pending-vacation-requests/pending-vacation-requests.component';
+import { FileDisplayComponent } from './components/file/file-display/file-display.component';
+import { ActiveVacationsComponent } from './components/vacation/active-vacations/active-vacations.component';
+import { AttendanceComponent } from './components/attendance/attendance/attendance.component';
+import { ListFilesComponent } from './components/file/list-files/list-files.component';
+import { AttendanceSheetComponent } from './components/attendance/attendance-sheet/attendance-sheet.component';
+import { GroupListComponent } from './components/user-group/group-list/group-list.component';
+import { GroupDetailsComponent } from './components/user-group/group-details/group-details.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent  },
@@ -38,6 +40,10 @@ const routes: Routes = [
   { path: 'activeVacations', component: ActiveVacationsComponent, canActivate: [AuthGuard]  },
   { path: 'myFiles', component: ListFilesComponent, canActivate: [AuthGuard]  },
   { path: 'attendanceSheet', component: AttendanceSheetComponent, canActivate: [AuthGuard]  },
+  { path: 'groups', component: GroupListComponent, canActivate: [AuthGuard]  },
+  { path: 'groups/:id', component: GroupDetailsComponent, canActivate: [AuthGuard]  },
+
+
 
   { path: 'markPresences', component: AttendanceComponent, canActivate: [AuthGuard]  },
 

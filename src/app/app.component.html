@@ -13,6 +13,15 @@
 
 
 
+        <div class="dropdown" *ngIf="isAllowed('markPresences')">
+          <button class="dropbtn">Eventos</button>
+          <div class="dropdown-content">
+            <a href="/createEvent" class="nav-link" (click)="check()" *ngIf="isAllowed('createEvent')" routerLink="createEvent">Criar evento</a>
+
+          
+          
+          </div>
+        </div>
 
         <div class="dropdown" *ngIf="isAllowed('markPresences')">
           <button class="dropbtn">Presenças</button>
@@ -32,6 +41,9 @@
         <button class="dropbtn">Grupos</button>
           <div class="dropdown-content">
             <a href="/createUserGroup" class="nav-link" (click)="check()" *ngIf="isAllowed('createUserGroup')" routerLink="createUserGroup">Criar grupo</a>
+            <a href="/groups" class="nav-link" (click)="check()" *ngIf="isAllowed('groups')" routerLink="groups">Meus grupos</a>
+
+          
           </div>
         </div>
 

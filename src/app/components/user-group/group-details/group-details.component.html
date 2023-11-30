@@ -1,0 +1,88 @@
+
+<div class="user-list">
+
+
+    <div class="container">
+        <h2>Adicionar utilizadores</h2>
+        <form id="addUserForm">
+
+            <div class="form-group">
+                <label for="group">Utilizador:</label>
+                <select id="group" name="group"       [(ngModel)]="userToBeAdded" value="{{userToBeAdded}}"
+                required>
+                    <option *ngFor="let user of usersNotInGroup" value="{{user.username}}">{{user.username}}</option>
+                </select>
+            </div>
+            <button type="submit" (click)="addUser()">Add User</button>
+<br>
+<br>
+
+            {{message}}
+
+        </form>
+    </div>
+
+
+
+
+<div class="profile-container">
+    <h1>Detalhes</h1>
+    <p><strong>ID:</strong> {{group?.id}}</p>
+    <p><strong>Sigla do grupo:</strong> {{group?.groupName}}</p>
+    <p><strong>Designação do grupo:</strong> {{group?.groupDesignation}}</p>
+
+</div>
+<br>
+<br>
+
+    <h2>Lista de utilizadores no grupo</h2>
+
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>username</th>
+                <th>Email</th>
+                <th></th>
+
+                <th *ngIf="isAllowed()"></th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users">
+                <td>{{user.id}}</td>
+                <td>{{user.username}}</td>
+                <td>{{user.email}}</td>
+                <td> <a href="/users/{{user.username}}" >Agenda</a></td>
+                <td *ngIf="isAllowed()"><button (click)="removeUser(user.username)">Remover</button></td>
+
+            </tr>
+            <!-- Add more rows as needed -->
+        </tbody>
+</table>
+
+
+</div>
+
+<div class="group-container">
+
+    <button id="leaveGroupBtn" (click)="popup = true">Sair do grupo</button>
+</div>
+
+
+
+<div class="overlay" *ngIf="popup">
+    <div class="popup">
+        <h2>Aviso!!</h2>
+        <a class="close" (click)="popup = false">&times;</a>
+        <div class="content">
+        De certeza que quer sair deste grupo?
+        </div>
+        <td>            <div class="stayButton">
+            <button id="leaveGroupBtn" class="stayButton" (click)="popup = false">Ficar no grupo</button></div></td>
+        <td><button id="leaveGroupBtn" (click)="leaveGroup()">Sair do grupo</button></td>
+
+    </div>
+</div>

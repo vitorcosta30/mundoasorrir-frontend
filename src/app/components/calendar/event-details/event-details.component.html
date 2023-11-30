@@ -1,0 +1,51 @@
+
+<br>
+<br>
+<div class="event-details">
+    <div class="event-header" [style.background-color]="headerColour">
+        <h1>{{type}}</h1>
+    </div>
+
+    <div class="event-info">
+        <p class="label">Descrição:</p>
+        <p>{{event?.description}}</p>
+
+        <p class="label">Local:</p>
+        <p>{{event?.place}}</p>
+
+        <p class="label">Data de inicio:</p>
+        <p>{{event?.start  | date: dateFormat }}</p>
+
+        <p class="label">Data de fim:</p>
+        <p>{{event?.end | date: dateFormat }}</p>
+    </div>
+</div>
+
+<div class="user-list">
+    <h2>Lista de utilizadores envolvidos</h2>
+
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>username</th>
+                <th>Email</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of enrolledUser">
+                <td>{{user.id}}</td>
+                <td>{{user.username}}</td>
+                <td>{{user.email}}</td>
+                <td> <a href="/users/{{user.username}}" >Agenda</a></td>
+            </tr>
+            <!-- Add more rows as needed -->
+        </tbody>
+</table>
+
+
+</div>
+
+

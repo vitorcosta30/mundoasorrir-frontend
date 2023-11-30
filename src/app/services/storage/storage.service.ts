@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
+import { is } from 'date-fns/locale';
 
 const USER_KEY = 'auth-user';
 const TOKEN_KEY = 'mundoasorrir';
@@ -35,9 +36,18 @@ export class StorageService {
 
     return null;
   }
-  public getRole(): String{
+  public getRole(): string{
     return this.getUser().roles[0];
   }
+
+  public isDirector(): boolean{
+    return this.getRole() == 'DIRECTOR' ;
+  }
+
+  public isManager(): boolean{
+    return this.getRole() == 'MANAGER' || this.isDirector();
+  }
+
 
   public isLoggedIn(): boolean {
     const user = window.sessionStorage.getItem(USER_KEY);

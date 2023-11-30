@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpRequest, HttpEvent, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { CalendarEvent } from 'angular-calendar';
-import { CalendarEventDTO } from 'src/app/calendar/calendar.model';
-import { EventModel } from 'src/app/create-event/event.model';
+import { CalendarEventDTO } from 'src/app/models/calendar.model';
+import { EventModel } from 'src/app/models/event.model';
 import { environment } from 'src/enviroment/enviroment';
 
 

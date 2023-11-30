@@ -19,7 +19,7 @@ export class RoleAuth {
     }
 
     employeeAccess(url: string):boolean{
-        return  url == 'profile'|| url == 'calendar' || url == 'files' || url == 'event-details' || url == 'activeVacations' || url == 'createVacationRequest'|| url == 'users' || url == 'myFiles';
+        return  url == 'profile'|| url == 'calendar' || url == 'files' || url == 'event-details' || url == 'activeVacations' || url == 'createVacationRequest'|| url == 'users' || url == 'myFiles' || url == 'groups';
     }
     managerAccess(url: string):boolean{
         return this.employeeAccess(url) || url == 'markPresences' || url == 'pendingVacationRequests' || url == 'createUserGroup' || url == 'createEvent' || url =='attendanceSheet';

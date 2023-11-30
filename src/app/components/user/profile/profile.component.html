@@ -1,0 +1,15 @@
+
+
+
+<div class="profile-container">
+  <h1>Perfil do utilizador</h1>
+  <p><strong>Username:</strong> {{currentUser?.username}}</p>
+  <p><strong>Email:</strong> <a href="mailto:{{currentUser?.email}}">{{currentUser?.email}}</a></p>
+
+  <p><strong>Cargo:</strong> {{role}}</p>
+</div>
+
+
+<ng-template #loggedOut>
+  Please login.
+</ng-template>

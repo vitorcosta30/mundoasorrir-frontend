@@ -1,0 +1,106 @@
+<div class="col-md-12">
+  <div class="card card-container">
+
+    <div
+      *ngIf="!isSuccessful"
+      name="form"
+      (ngSubmit)="upload()"
+      novalidate
+    >
+
+<div>
+  <mat-toolbar *ngIf="currentFile" class="progress-bar">
+    <mat-progress-bar color="accent" [value]="progress"></mat-progress-bar>
+    <span class="progress">{{ progress }}%</span>
+  </mat-toolbar>
+
+  <mat-form-field>
+    <div>
+      <mat-toolbar>
+        <input matInput [value]="fileName" />
+
+
+
+      </mat-toolbar>
+
+      <input
+        type="file"
+        id="fileInput"
+        (change)="selectFile($event)"
+        name="fileInput"
+      />
+    </div>
+
+  </mat-form-field>
+
+
+
+
+  <h3>Utilizadores</h3>
+  <div class="form-group" *ngFor="let user of users; let i = index; ">
+    <label for="username">Nome de utilizador</label>
+    <select
+      type="text"
+      [(ngModel)]="users[i]"
+
+      class="form-control"
+      name="username"
+      value="{{user}}"
+    >
+
+    <option *ngFor="let user of availableUsers" value="{{user.username}}">{{user.username}}</option>
+    </select>
+
+  </div>
+
+  <button class="btn btn-primary btn-block" (click)="addUser()">
+    Adicionar Utilizador
+  </button>
+
+
+  <h3>Grupos</h3>
+  <div class="form-group" *ngFor="let group of groups; let i = index; ">
+    <label for="username">Grupo</label>
+    <select
+      type="text"
+      [(ngModel)]="groups[i]"
+
+      class="form-control"
+      name="username"
+      value="{{groups[i]}}"
+    >
+
+    <option *ngFor="let availableGroup of availableGroups" value="{{availableGroup.id}}">{{availableGroup.groupName}}  - {{availableGroup.groupDesignation}}</option>
+    </select>
+
+
+    </div>
+  <button class="btn btn-primary btn-block" (click)="addGroup()">
+    Adicionar Grupo
+  </button>
+
+
+</div>
+
+<button
+color="primary"
+[disabled]="!currentFile"
+(click)="upload()"
+>
+Upload
+</button>
+<div class="alert alert-warning" *ngIf="isSignUpFailed">
+  Erro!<br />{{ message }}
+</div>
+</div>
+
+<div class="alert alert-success" *ngIf="isSuccessful">
+  Ficheiro foi partilhado com sucesso!
+</div>
+<div *ngIf="message" class="message">
+  {{ message }}
+</div>
+</div>
+</div>
+
+

@@ -1,0 +1,39 @@
+
+<div class="request-list">
+    <h2>Lista de pedidos de feria por aprovar</h2>
+
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome de utilizador</th>
+                <th>Email</th>
+                <th>Data de inicio</th>
+                <th>Data de fim</th>
+                <th>Aceitar/Rejeitar</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let request of pendingRequests">
+                <td>{{request.id}}</td>
+                <td><a href="/users/{{request.userName}}" >{{request.userName}}</a></td>
+                <td>{{request.userEmail}}</td>
+                <td> {{request.startDate | date : 'dd/MM/yyyy'}}</td>
+                <td> {{request.endDate | date : 'dd/MM/yyyy'}}</td>
+                <td>  <button id="acceptButton" class="btn btn-primary btn-block" (click)="acceptRequest(request.id)">
+                    Aceitar
+                  </button>   <button id="rejectButton" class="btn btn-primary btn-block" (click)="rejectRequest(request.id)">
+                    Rejeitar
+                  </button>
+                </td>
+
+            </tr>
+            <!-- Add more rows as needed -->
+        </tbody>
+</table>
+
+
+</div>
+

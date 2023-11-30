@@ -1,0 +1,75 @@
+<div class="col-md-12">
+    <div class="card card-container">
+  
+      <form
+        name="form"
+        (ngSubmit)="f.form.valid && getUnmarkedPresences()"
+        #f="ngForm"
+        novalidate
+      >
+  
+
+
+  
+  
+  
+  
+        <div class="form-group">
+          <label for="username">Data</label>
+          <input
+            type="date"
+            class="form-control"
+            name="date"
+            [(ngModel)]="date"
+            required
+            minlength="3"
+            maxlength="20"
+          />
+  
+        </div>
+   
+
+  
+  
+  
+  
+  
+        <div class="form-group">
+          <button class="btn btn-primary btn-block">Consultar</button>
+        </div>
+  
+
+      </form>
+      <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome de utilizador</th>
+                <th>Email</th>
+                <th>Papel</th>
+                <th>Agenda</th>
+                <th>Present/Falta</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of usersInDay">
+                <td>{{user.id}}</td>
+                <td>{{user.username}}</td>
+                <td>{{user.email}}</td>
+                <td> {{user.role}}</td>
+                <td>             <a href="/users/{{user.username}}" >Agenda</a>                </td>
+                <td>  <button id="markPresentButton" class="btn btn-primary btn-block" (click)="isPresent(user.username)">
+                    Presente
+                  </button>   <button id="markAbsentButton" class="btn btn-primary btn-block" (click)="isAbsent(user.username)">
+                    Falta
+                  </button>
+                </td>
+            </tr>
+            <!-- Add more rows as needed -->
+        </tbody>
+</table>
+  
+
+    </div>
+  </div>

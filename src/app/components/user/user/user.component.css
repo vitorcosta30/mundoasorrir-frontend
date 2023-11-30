@@ -1,0 +1,63 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #3369b9;
+  color: white;
+}
+
+tr:hover {
+  background-color: #f5f5f5;
+}
+
+
+button {
+  padding: 10px;
+  margin: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  color: #ffffff;
+  text-align: center;
+  background-color: #4c77af; /* Green */
+
+  text-decoration: none;
+  display: inline-block;
+  transition-duration: 0.4s;
+}
+
+#activateButton {
+  background-color: #4CAF50; /* Green */
+  border: 2px solid #4CAF50;
+}
+
+#activateButton:hover {
+  background-color: #45a049;
+  color: white;
+}
+
+#deactivateButton {
+  background-color: #f44336; /* Red */
+  border: 2px solid #f44336;
+}
+
+#deactivateButton:hover {
+  background-color: #d32f2f;
+  color: white;
+}

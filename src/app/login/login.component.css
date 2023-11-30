@@ -6,6 +6,7 @@ label {
   .card-container.card {
     max-width: 400px !important;
     padding: 40px 40px;
+    align-items: center;
   }
   
   .card {
@@ -29,4 +30,45 @@ label {
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
     border-radius: 50%;
+  }
+
+
+  label {
+    display: block;
+    margin-bottom: 8px;
+    color: #3498db; /* Label color */
+  }
+  
+  input {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #bdc3c7; /* Input border color */
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  input:focus {
+    outline: none;
+    border-color: #3498db; /* Border color on focus */
+    box-shadow: 0 0 8px rgba(52, 152, 219, 0.5); /* Box shadow on focus */
+  }
+
+
+
+
+  .login-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    background-color: #3498db; /* Button color */
+    color: #fff; /* Text color */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .login-button:hover {
+    background-color: #2980b9; /* Button color on hover */
   }
