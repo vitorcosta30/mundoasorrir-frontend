@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/enviroment/enviroment';
+import { ChangePassword } from 'src/app/models/changePassword.model';
 
 const AUTH_API = environment.apiURL +'auth/';
 
@@ -39,6 +40,11 @@ export class AuthService {
       },
       httpOptions
     );
+  }
+
+  setNewPassword(newPassword :ChangePassword): Observable<any>{
+    let username: string =  newPassword.username;
+    return this.http.patch(AUTH_API + 'changePassword/'+ username, newPassword)
   }
   getRoles(): Observable<any>{
     return this.http.get(USER_API + 'getRoles',{}).pipe();
