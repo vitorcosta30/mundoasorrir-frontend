@@ -7,8 +7,13 @@
                 <th>ID</th>
                 <th>username</th>
                 <th>Email</th>
+                <th>Cargo</th>
+
                 <th></th>
                 <th *ngIf="isDirector()"></th>
+                <th *ngIf="isDirector()"></th>
+                <th *ngIf="isDirector()"></th>
+
 
             </tr>
         </thead>
@@ -17,6 +22,8 @@
                 <td>{{user.id}}</td>
                 <td>{{user.username}}</td>
                 <td>{{user.email}}</td>
+                <td>{{user.role}}</td>
+
                 <td> <a href="/users/{{user.username}}" >Agenda</a></td>
                 <td *ngIf="isDirector()"> 
                     <button id="activateButton" *ngIf="!user.active" class="btn btn-primary btn-block" (click)="activate(user.username)">
@@ -26,9 +33,137 @@
                     Desativar
                   </button></td>
 
+                  <td *ngIf="isDirector()"> 
+                    <button   class="btn btn-primary btn-block" (click)="updateUserStart(user)">
+                    Atualizar informações
+                  </button>   
+                </td>
+
+
+                <td *ngIf="isDirector()"> 
+                    <button   class="btn btn-primary btn-block" (click)="changeUserPasswordStart(user)">
+                    Cria nova password
+                  </button>   
+                </td>
+
+
             </tr>
             <!-- Add more rows as needed -->
         </tbody>
 </table>
+
+</div>
+
+
+
+
+
+
+<div class="overlay" *ngIf="updateUser">
+    <div class="popup">
+        <h2>Atualizar informações de {{userToBeUpdated.username}}</h2>
+        <a class="close" (click)="updateUserCancel()">&times;</a>
+        <div class="content">
+    <div
+      *ngIf="!isSuccessful"
+      name="form"
+      (ngSubmit)="updateUserRequest(userToBeUpdated.id)"
+      novalidate
+    >
+
+    <div class="form-group">
+      <label for="place">Username</label>
+      <input
+        type="text"
+        class="form-control"
+        name="place"
+        [(ngModel)]="userToBeUpdated.username"
+        required
+        minlength="6"
+      />
+
+    </div>
+    <div class="form-group">
+      <label for="description">E-mail</label>
+      <input
+        type="text"
+        class="form-control"
+        name="description"
+        [(ngModel)]="userToBeUpdated.email"
+        required
+        minlength="6"
+      />
+
+    </div>
+
+
+
+      <div class="alert alert-warning" *ngIf="isSignUpFailed">
+        Erro!<br />{{ errorMessage }}
+      </div>
+    </div>
+
+    <div class="alert alert-success" *ngIf="isSuccessful">
+      Informações atualizadas com sucesso!
+    </div>
+        </div>
+        <td>            <div class="stayButton">
+            <button id="leaveGroupBtn" class="stayButton"   *ngIf="!isSuccessful" (click)="updateUserRequest(userToBeUpdated.id)">Atualizar</button></div></td>
+        <td><button id="leaveGroupBtn"  *ngIf="!isSuccessful" (click)="updateUserCancel()">Cancelar</button></td>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="overlay" *ngIf="updatePassword">
+    <div class="popup">
+        <h2>Aviso!!</h2>
+        <a class="close" (click)="changeUserPasswordCancel()">&times;</a>
+        <div class="content">
+    <div
+      *ngIf="!isSuccessfulPassword"
+      name="form"
+      (ngSubmit)="updateUserPasswordRequest()"
+      novalidate
+    >
+    <div class="form-group">
+      <label for="description">Nova password</label>
+      <input
+        type="password"
+        class="form-control"
+        name="description"
+        [(ngModel)]="changePasswordRequest.newPassword"
+        required
+        minlength="6"
+      />
+
+    </div>
+
+
+
+      <div class="alert alert-warning" *ngIf="isSignUpFailedPassword">
+        Erro!<br />{{ errorMessage }}
+      </div>
+    </div>
+
+    <div class="alert alert-success" *ngIf="isSuccessfulPassword">
+      Password atualizada com sucesso!
+    </div>
+        </div>
+        <td>            
+            <div class="stayButton">
+            <button id="leaveGroupBtn"   *ngIf="!isSuccessfulPassword"class="stayButton" (click)="updateUserPasswordRequest()">Atualizar</button></div></td>
+        <td><button id="leaveGroupBtn"   *ngIf="!isSuccessfulPassword" (click)="changeUserPasswordCancel()">Cancelar</button></td>
+
+    </div>
 
 </div>
