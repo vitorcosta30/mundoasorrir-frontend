@@ -30,3 +30,51 @@ label {
     -webkit-border-radius: 50%;
     border-radius: 50%;
   }
+
+
+  button {
+    padding: 10px;
+    margin: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    text-align: center;
+    background-color: #4c77af; /* Green */
+  
+    text-decoration: none;
+    display: inline-block;
+    transition-duration: 0.4s;
+  }
+  input {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #bdc3c7; /* Input border color */
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  input:focus {
+    outline: none;
+    border-color: #3498db; /* Border color on focus */
+    box-shadow: 0 0 8px rgba(52, 152, 219, 0.5); /* Box shadow on focus */
+  }
+  
+  select {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #bdc3c7; /* Input border color */
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  select:focus {
+    outline: none;
+    border-color: #3498db; /* Border color on focus */
+    box-shadow: 0 0 8px rgba(52, 152, 219, 0.5); /* Box shadow on focus */
+  }
+  
+  

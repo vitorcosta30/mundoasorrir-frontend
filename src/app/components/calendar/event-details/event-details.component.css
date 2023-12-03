@@ -27,7 +27,16 @@ tr:hover {
 
 
 
-
+a {
+    color: #007bff; /* Link color */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  a:hover {
+    color: #0056b3; /* Darker blue on hover */
+  }
 
 body {
     font-family: Arial, sans-serif;
