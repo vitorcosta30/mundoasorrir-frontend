@@ -26,7 +26,7 @@ export class RoleAuth {
     }
 
     directorAccess(url: string): boolean{
-        return this.managerAccess(url) || url == 'register'
+        return this.managerAccess(url) || url == 'register' || url == 'editUser'
     }
 
 }
