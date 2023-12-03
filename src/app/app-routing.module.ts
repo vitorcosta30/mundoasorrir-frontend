@@ -48,6 +48,7 @@ const routes: Routes = [
   { path: 'markPresences', component: AttendanceComponent, canActivate: [AuthGuard]  },
 
 
+
   { path: '**', redirectTo: 'login' },
 
 
