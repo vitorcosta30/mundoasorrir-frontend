@@ -50,14 +50,13 @@
         </div>
         <div class="form-group">
           <div *ngIf="f.submitted && isLoginFailed" class="alert alert-danger" role="alert">
-            Login failed: {{ errorMessage }}
+            Login falhou: {{ errorMessage }}
           </div>
         </div>
       </form>
   
       <div class="alert alert-success" *ngIf="isLoggedIn">
-        Logged in as {{ roles }}.
+        Conectado como {{ username }}.
       </div>
     </div>
   </div>
-  {{isLoggedIn}}

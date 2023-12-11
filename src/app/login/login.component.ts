@@ -16,7 +16,7 @@ import { StorageService } from '../services/storage/storage.service';
       isLoginFailed = false;
       
       errorMessage = '';
-      roles: string[] = [];
+      username: string = "";
       constructor(private authService: AuthService, private storageService: StorageService) { }
 
      ngOnInit(): void {
@@ -27,7 +27,7 @@ import { StorageService } from '../services/storage/storage.service';
           this.isLoggedIn = true;
           this.authService.getUser().subscribe(usr => {
             this.storageService.saveUser(usr);
-            this.roles = this.storageService.getUser().roles;
+            this.username = this.storageService.getUser().username;
           })
   
         }else{
@@ -52,7 +52,7 @@ import { StorageService } from '../services/storage/storage.service';
     
             this.isLoginFailed = false;
             this.isLoggedIn = true;
-            this.roles = this.storageService.getUser().roles;
+            this.username = this.storageService.getUser().username;
             this.reloadPage();
           },
           error: err => {
@@ -64,8 +64,8 @@ import { StorageService } from '../services/storage/storage.service';
       getIsLoggedIn(): boolean{
         return this.isLoggedIn;
       }
-      getRole(): String{
-        return this.roles[0];
+      getUsername(): String{
+        return this.username;
       }
     
       reloadPage(): void {
