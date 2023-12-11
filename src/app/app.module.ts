@@ -41,6 +41,8 @@ import { ListFilesComponent } from './components/file/list-files/list-files.comp
 import { GroupListComponent } from './components/user-group/group-list/group-list.component';
 import { GroupDetailsComponent } from './components/user-group/group-details/group-details.component';
 import { AttendanceSheetComponent } from './components/attendance/attendance-sheet/attendance-sheet.component';
+import { CreateProjectComponent } from './components/project/create-project/create-project.component';
+import { ListProjectsComponent } from './components/project/list-projects/list-projects.component';
 const materialModules = [
   MatCardModule,
   MatToolbarModule,
@@ -75,6 +77,8 @@ registerLocaleData(localePt);
     GroupListComponent,
     GroupDetailsComponent,
     AttendanceSheetComponent,
+    CreateProjectComponent,
+    ListProjectsComponent,
 
 
   ],

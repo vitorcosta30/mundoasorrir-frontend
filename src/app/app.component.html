@@ -23,6 +23,17 @@
           </div>
         </div>
 
+
+        <div class="dropdown" *ngIf="isAllowed('createProject')">
+          <button class="dropbtn">Projetos</button>
+          <div class="dropdown-content">
+            <a href="/createProject" class="nav-link" (click)="check()" *ngIf="isAllowed('createProject')" routerLink="createProject">Criar projeto</a>
+
+          
+          
+          </div>
+        </div>
+
         <div class="dropdown" *ngIf="isAllowed('markPresences')">
           <button class="dropbtn">Presenças</button>
           <div class="dropdown-content">

@@ -21,6 +21,7 @@ import { ListFilesComponent } from './components/file/list-files/list-files.comp
 import { AttendanceSheetComponent } from './components/attendance/attendance-sheet/attendance-sheet.component';
 import { GroupListComponent } from './components/user-group/group-list/group-list.component';
 import { GroupDetailsComponent } from './components/user-group/group-details/group-details.component';
+import { CreateProjectComponent } from './components/project/create-project/create-project.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent  },
@@ -43,6 +44,7 @@ const routes: Routes = [
   { path: 'groups', component: GroupListComponent, canActivate: [AuthGuard]  },
   { path: 'groups/:id', component: GroupDetailsComponent, canActivate: [AuthGuard]  },
 
+  { path: 'createProject', component: CreateProjectComponent, canActivate: [AuthGuard]  },
 
 
   { path: 'markPresences', component: AttendanceComponent, canActivate: [AuthGuard]  },
