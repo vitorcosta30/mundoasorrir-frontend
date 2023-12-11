@@ -4,13 +4,13 @@ import { Injectable } from '@angular/core';
 export class RoleAuth {
     constructor() { }
     roleAccesses(role:String,url:string){
-        if(role == 'EMPLOYEE'){
+        if(role == 'COLABORADOR'){
             return this.employeeAccess(url);
         }
-        if(role == 'MANAGER'){
+        if(role == 'COORDENADOR'){
             return this.managerAccess(url);
         }
-        if(role == 'DIRECTOR'){
+        if(role == 'DIRETOR'){
             return this.directorAccess(url);
         }
 
@@ -26,7 +26,7 @@ export class RoleAuth {
     }
 
     directorAccess(url: string): boolean{
-        return this.managerAccess(url) || url == 'register' || url == 'editUser'
+        return this.managerAccess(url) || url == 'register' || url == 'createProject'
     }
 
 }
