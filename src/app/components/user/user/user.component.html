@@ -8,7 +8,8 @@
                 <th>username</th>
                 <th>Email</th>
                 <th>Cargo</th>
-
+                <th>Designação do projeto atual</th>
+                <th>Local de projeto atual</th>
                 <th></th>
                 <th *ngIf="isDirector()"></th>
                 <th *ngIf="isDirector()"></th>
@@ -23,7 +24,8 @@
                 <td>{{user.username}}</td>
                 <td>{{user.email}}</td>
                 <td>{{user.role}}</td>
-
+                <td>{{user.currentProject.designation}}</td>
+                <td>{{user.currentProject.location}}</td>
                 <td> <a href="/users/{{user.username}}" >Agenda</a></td>
                 <td *ngIf="isDirector()"> 
                     <button id="activateButton" *ngIf="!user.active" class="btn btn-primary btn-block" (click)="activate(user.username)">
@@ -96,6 +98,42 @@
 
     </div>
 
+
+
+
+
+    <div class="form-group">
+      <label for="role">Cargo</label>
+
+      <select name="roles" id="roles"          type="text"
+      class="form-control"
+      name="role"
+      [(ngModel)]="userToBeUpdated.role"
+      required
+      minlength="6"
+      #role="ngModel">
+            <option *ngFor="let role of roles" value="{{role.name}}">{{role.name}}</option>
+
+      </select>
+    </div>
+
+
+
+    <div class="form-group">
+      <label for="role">Projeto</label>
+
+      <select name="roles" id="roles"         
+       type="text"
+      class="form-control"
+      name="project"
+      [(ngModel)]="userToBeUpdated.currentProject"
+      required
+      minlength="6"
+      #project="ngModel">
+            <option *ngFor="let project of projects" [ngValue]="project">{{project.designation}}</option>
+
+      </select>
+    </div>
 
 
       <div class="alert alert-warning" *ngIf="isSignUpFailed">

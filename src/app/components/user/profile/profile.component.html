@@ -7,6 +7,97 @@
   <p><strong>Email:</strong> <a href="mailto:{{currentUser?.email}}">{{currentUser?.email}}</a></p>
 
   <p><strong>Cargo:</strong> {{role}}</p>
+  <p><strong>Projeto atual:</strong> {{currentUser?.currentProject?.designation}} em <strong>{{currentUser?.currentProject?.location}}</strong> </p>
+
+
+  <button   class="btn btn-primary btn-block" (click)="changeUserPasswordStart()">
+    Cria nova password
+  </button>   
+
+</div>
+
+
+<div class="overlay" *ngIf="updatePassword">
+  <div class="popup">
+      <h2>Aviso!!</h2>
+      <a class="close" (click)="changeUserPasswordCancel()">&times;</a>
+      <div class="content">
+  <div
+    *ngIf="!isSuccessfulPassword"
+    name="form"
+    (ngSubmit)="updateUserPasswordRequest()"
+    novalidate
+  >
+
+  <div class="form-group">
+    <label for="description">Password atual</label>
+    <input
+      type="password"
+      class="form-control"
+      name="description"
+      [(ngModel)]="changePasswordRequest.oldPassword"
+      required
+      minlength="6"
+    />
+
+  </div>
+
+
+
+
+
+  <div class="form-group">
+    <label for="description">Nova password</label>
+    <input
+      type="password"
+      class="form-control"
+      name="description"
+      [(ngModel)]="changePasswordRequest.newPassword"
+      required
+      minlength="6"
+    />
+
+  </div>
+
+
+  <div class="form-group">
+    <label for="description">Repetir nova password</label>
+    <input
+      type="password"
+      class="form-control"
+      name="description"
+      [(ngModel)]="changePasswordRequest.reNewPassword"
+      required
+      minlength="6"
+    />
+
+  </div>
+    <div class="alert alert-warning" *ngIf="isSignUpFailedPassword">
+      Erro!<br />{{ errorMessage }}
+    </div>
+  </div>
+
+  <div class="alert alert-success" *ngIf="isSuccessfulPassword">
+    Password atualizada com sucesso!
+  </div>
+  <div class="alert alert-success" *ngIf="!minimumSize()">
+    Nova password deve ter mais de 4 caracters!!
+  </div>
+  <div class="alert alert-success" *ngIf="!passwordsCoincide()">
+    Nova passwqord e repetição não coincidem!!
+  </div>
+
+  <div class="alert alert-success" *ngIf="!newOldDiff()">
+    Nova password não pode ser igual à antiga!
+  </div>
+      </div>
+      <td>            
+          <div class="stayButton">
+          <button id="leaveGroupBtn"  [disabled]="changePasswordSubmit()"     *ngIf="!isSuccessfulPassword"class="stayButton" (click)="updateUserPasswordRequest()">Atualizar</button></div></td>
+      <td><button id="leaveGroupBtn"   *ngIf="!isSuccessfulPassword" (click)="changeUserPasswordCancel()">Cancelar</button></td>
+
+  </div>
+
 </div>
 
 

@@ -41,17 +41,17 @@ export class UserDetailsComponent implements OnInit{
       for(let i = 0;  i < this.eventsList.length; i++){
         let event : CalendarEventDTO = this.eventsList[i];
         let eventCalendar : CalendarEvent = {title: event.description,start:new Date(event.start), end:new Date(event.end),id : event.id};
-        if(event.type == 'MISSION') {
+        if(event.type == 'MISSÃO') {
           eventCalendar.color = colors.red;
           eventCalendar.allDay = true;
           eventCalendar.title = 'Missão -  <a href="/event-details/'+event.id+'" >Detalhes</a> ';
 
         }else{
-          if(event.type=='MEETING'){
+          if(event.type=='REUNIÃO'){
           eventCalendar.color = colors.blue;
           eventCalendar.title = 'Reunião - <a href="/event-details/'+event.id+'" >Detalhes</a> ';
           }else{
-              if(event.type=='VACATION'){
+              if(event.type=='FÉRIAS'){
                 eventCalendar.color = colors.yellow;
                 eventCalendar.allDay = true;
 

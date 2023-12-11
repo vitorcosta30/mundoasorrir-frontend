@@ -5,6 +5,9 @@ import { StorageService } from '../../../services/storage/storage.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { ChangePassword } from 'src/app/models/changePassword.model';
 import { delay } from 'rxjs';
+import { Project } from 'src/app/models/project.model';
+import { ProjectService } from 'src/app/services/project/project.service';
+import { Role } from 'src/app/models/role.model';
 
 @Component({
   selector: 'app-user',
@@ -14,14 +17,17 @@ import { delay } from 'rxjs';
 export class UserComponent implements OnInit{
   users: User[] = [];
   constructor (private userService : UserService,
-    private storageService: StorageService, private authService : AuthService){
+    private storageService: StorageService, private authService : AuthService, private projectService: ProjectService){
   }
-  userToBeUpdated: User = new User("","","","",false);
+  userToBeUpdated: User = new User("","","","",false,new Project(0,"",""));
   updateUser : boolean = false;
   isSuccessful = false;
   isSignUpFailed = false;
   errorMessage = '';
 
+  projects: Project[] = []
+
+  roles : Role[] = [];
 
 
 
@@ -31,6 +37,8 @@ export class UserComponent implements OnInit{
   isSuccessfulPassword = false;
   isSignUpFailedPassword = false;
   ngOnInit(): void {
+    this.getRoles();
+    this.getProjects();
     this.getUsers();
   }
 
@@ -55,21 +63,28 @@ export class UserComponent implements OnInit{
     })
   }
 
+  getRoles(): void {
+    this.authService.getRoles().subscribe(r => this.roles = r);
+  }
+  getProjects(): void {
+    this.projectService.getProjects().subscribe(p => this.projects = p);
+  }
+
+
+
+
   updateUserStart(user: User): void{
-    this.userToBeUpdated.email = user.email;
-    this.userToBeUpdated.role = user.role;
-    this.userToBeUpdated.id = user.id;
-    this.userToBeUpdated.username = user.username;
-    this.userToBeUpdated.active = user.active;
+    this.userToBeUpdated = user
 
     this.updateUser = true;
   }
 
   updateUserCancel(): void{
-    this.userToBeUpdated = new User("","","","",false);
+    this.userToBeUpdated = new User("","","","",false,new Project(0,"",""));
     this.updateUser = false;
     this.isSuccessful = false;
     this.isSignUpFailed = false;
+    this.getUsers();
   }
 
 
@@ -130,8 +145,8 @@ export class UserComponent implements OnInit{
         this.isSignUpFailedPassword = true;
       }
     })
-    }
   }
+}
 
 
 
