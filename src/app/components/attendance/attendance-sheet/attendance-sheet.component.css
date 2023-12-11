@@ -63,3 +63,29 @@ button {
   display: inline-block;
   transition-duration: 0.4s;
 }
+a {
+  color: #007bff; /* Link color */
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease-in-out;
+}
+
+a:hover {
+  color: #0056b3; /* Darker blue on hover */
+}
+
+
+input {
+  width: 20%;
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #bdc3c7; /* Input border color */
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input:focus {
+  outline: none;
+  border-color: #3498db; /* Border color on focus */
+  box-shadow: 0 0 8px rgba(52, 152, 219, 0.5); /* Box shadow on focus */
+}
