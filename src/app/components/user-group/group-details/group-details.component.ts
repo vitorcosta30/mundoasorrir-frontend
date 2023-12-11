@@ -35,7 +35,9 @@ export class GroupDetailsComponent implements OnInit {
       this.id = params['id'];
       this.getGroup();
       this.getUsersInGroup();
-      this.getUsersNotInGroup();
+      if(this.isAllowed()){
+        this.getUsersNotInGroup();
+      }
     })
   }
   isAllowed(): boolean{

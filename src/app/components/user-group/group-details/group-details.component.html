@@ -2,7 +2,7 @@
 <div class="user-list">
 
 
-    <div class="container">
+    <div class="container" *ngIf="isAllowed()">
         <h2>Adicionar utilizadores</h2>
         <form id="addUserForm">
 
