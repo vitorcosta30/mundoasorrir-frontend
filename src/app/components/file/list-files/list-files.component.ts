@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { FileModel } from 'src/app/models/file.model';
 import { FileUploadService } from 'src/app/services/file-upload/file-upload.service';
 
 @Component({
@@ -8,13 +9,17 @@ import { FileUploadService } from 'src/app/services/file-upload/file-upload.serv
   styleUrls: ['./list-files.component.css']
 })
 export class ListFilesComponent implements OnInit{
-  fileInfos?: Observable<any>;
+  fileInfos: FileModel[] = [];
   constructor(private uploadService: FileUploadService) { }
 
 
   ngOnInit(): void {
+    this.getFiles();
 
-    this.fileInfos = this.uploadService.getFiles();
+  }
+
+  getFiles(): void{
+    this.uploadService.getFiles().subscribe(res => this.fileInfos = res)
   }
 
 }
