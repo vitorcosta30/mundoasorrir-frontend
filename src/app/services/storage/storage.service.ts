@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
 import { is } from 'date-fns/locale';
+import { User } from 'src/app/models/user.model';
 
 const USER_KEY = 'auth-user';
 const TOKEN_KEY = 'mundoasorrir';
@@ -16,7 +17,7 @@ export class StorageService {
     window.sessionStorage.clear();
   }
 
-  public saveUser(user: any): void {
+  public saveUser(user: User): void {
     window.sessionStorage.removeItem(USER_KEY);
     window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));
   }
@@ -37,15 +38,15 @@ export class StorageService {
     return null;
   }
   public getRole(): string{
-    return this.getUser().roles[0];
+    return this.getUser().role;
   }
 
   public isDirector(): boolean{
-    return this.getRole() == 'DIRECTOR' ;
+    return this.getRole() == 'DIRETOR' ;
   }
 
   public isManager(): boolean{
-    return this.getRole() == 'MANAGER' || this.isDirector();
+    return this.getRole() == 'COORDENADOR' || this.isDirector();
   }
 
 

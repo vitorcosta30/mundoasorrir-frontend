@@ -36,8 +36,15 @@ export class FileUploadService {
   }
 
   getFiles(): Observable<any> {
-    return this.http.get(`${this.baseUrl}files/files`,{
-
-    } );
+    return this.http.get(`${this.baseUrl}files/files`);
   }
+
+  getMaxUpload(): Observable<any> {
+    return this.http.get(`${this.baseUrl}files/maxUploadSize`);
+  }
+
+
+
 }
+
+
