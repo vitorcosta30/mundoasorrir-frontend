@@ -6,6 +6,7 @@ import { User } from '../../../models/user.model';
 import { UserService } from '../../../services/user/user.service';
 import { UserGroup } from '../../user-group/create-user-group/user-group.model';
 import { GroupService } from '../../../services/groups/group.service';
+import { UploadInfo } from 'src/app/models/upload-info.model';
 
 @Component({
   selector: 'app-file-upload',
@@ -15,14 +16,20 @@ import { GroupService } from '../../../services/groups/group.service';
 export class FileUploadComponent implements OnInit {
   isSuccessful = false;
   isSignUpFailed = false;
-  currentFile?: File;
+  currentFile: File = new File([],"");
   progress = 0;
   message = '';
   users: string[] = [];
 
   availableUsers: User[] = [];
+  uploadInfo: UploadInfo = new UploadInfo("",0);
+
+
 
   availableGroups: UserGroup[] = [];
+
+
+  uploadSize: string = "";
 
 
 
@@ -33,18 +40,32 @@ export class FileUploadComponent implements OnInit {
 
 
 
+
   addGroup(): void{
     this.groups.push('')
   }
-  fileName = 'Select File';
+  fileName = 'Selecione o ficheiro';
   fileInfos?: Observable<any>;
 
   constructor(private uploadService: FileUploadService, private userService: UserService,private groupService: GroupService) { }
 
   ngOnInit(): void {
+    this.getMaxUploadSize();
     this.getUsers();
     this.getGroups();
   }
+
+
+
+  uploadAvailable(): boolean{
+    return this.currentFile.size < this.uploadInfo.maxSizeBytes && this.currentFile.size > 0
+  }
+  getMaxUploadSize(): void{
+    this.uploadService.getMaxUpload().subscribe(res => this.uploadInfo = res)
+  }
+
+
+
 
   getUsers(): void{
     this.userService.getUsers().subscribe(res => this.availableUsers = res)
@@ -62,7 +83,7 @@ export class FileUploadComponent implements OnInit {
       this.currentFile = file;
       this.fileName = this.currentFile.name;
     } else {
-      this.fileName = 'Select File';
+      this.fileName = 'Selecione o ficheiro';
     }
   }
 
@@ -93,7 +114,7 @@ export class FileUploadComponent implements OnInit {
             this.message = 'Could not upload the file!';
           }
 
-          this.currentFile = undefined;
+          this.currentFile = new File([],"");
         });
     }
 

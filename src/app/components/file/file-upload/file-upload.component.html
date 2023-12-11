@@ -33,7 +33,10 @@
 
   </mat-form-field>
 
-
+  <div class="upload-info">
+    <p>Tamanho maximo do ficheiro: {{ uploadInfo.maxSizeString }}</p>
+    <p>Formatos: JPG, PNG, PDF</p>
+</div>
 
 
   <h3>Utilizadores</h3>
@@ -84,7 +87,7 @@
 
 <button
 color="primary"
-[disabled]="!currentFile"
+[disabled]="!uploadAvailable()"
 (click)="upload()"
 >
 Upload

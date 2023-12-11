@@ -91,6 +91,24 @@ label {
   display: block;
   margin-top: 10px;
 }
+button:disabled {
+  background-color: #dddddd; /* Change the background color */
+  color: #666666; /* Change the text color */
+  cursor: not-allowed; /* Change the cursor */
+  /* Add any other styles you want for the disabled state */
+}
+
+
+.upload-info {
+  padding: 10px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+
+
 
 .card-container.card {
   max-width: 400px !important;
