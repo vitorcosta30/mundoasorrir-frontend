@@ -29,20 +29,20 @@ export class EventDetailsComponent implements OnInit{
     })
   }
   setDateFormat(): void{
-    if(this.event?.type == 'MEETING'){
+    if(this.event?.type == 'REUNIÃO'){
       this.dateFormat = "d/M/yyyy HH:MM"
       this.headerColour = colors.blue.primary;
       this.type = "Reunião";
     }
-    if(this.event?.type == 'MISSION' || this.event?.type == 'VACATION'){
+    if(this.event?.type == 'MISSÃO' || this.event?.type == 'FÉRIAS'){
       this.dateFormat = "d/M/yyyy"
     }
-    if(this.event?.type == 'VACATION'){
+    if(this.event?.type == 'FÉRIAS'){
       this.headerColour = "#e3bc08";
       this.type = "Férias";
 
     }    
-    if(this.event?.type == 'MISSION' ){
+    if(this.event?.type == 'MISSÃO' ){
       this.headerColour = '#ad2121';
       this.type = "Missão";
 
