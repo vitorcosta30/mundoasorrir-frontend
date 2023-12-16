@@ -25,5 +25,25 @@ export class ProjectService {
     return this.http.get(PROJECT_API+"getProjects" )
   }
 
+  getAllProjects(): Observable<any>{
+    return this.http.get(PROJECT_API+"getAllProjects" )
+
+  }
+  activateProject(id: number): Observable<any>{
+
+    return this.http.post(PROJECT_API+"activateProject/"+id,{})
+
+  }
+
+  deactivateProject(id: number): Observable<any>{
+    return this.http.post(PROJECT_API+"deactivateProject/"+id,{})
+
+  }
+
+  getUsersOnVacationMonth(id : number, year: number, month: number): Observable<any>{
+    return this.http.get(PROJECT_API  + 'getUsersOnVacation/'+id+"/"+ year+"/"+month)
+  }
+
+
 
 }

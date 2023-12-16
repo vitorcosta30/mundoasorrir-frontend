@@ -62,5 +62,14 @@ export class UserService {
 
   }
 
+  getPresencesMonth(username : String, year: number, month: number): Observable<any>{
+    return this.http.get(USER_API  + 'getPresences/'+username+"/"+ year+"/"+month)
+  }
+
+
+  getPresencesYear(username : String, year: number): Observable<any>{
+    return this.http.get(USER_API  + 'getPresences/'+username+"/"+ year)
+  }
+
 
 }

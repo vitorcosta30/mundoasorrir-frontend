@@ -19,7 +19,7 @@ export class UserComponent implements OnInit{
   constructor (private userService : UserService,
     private storageService: StorageService, private authService : AuthService, private projectService: ProjectService){
   }
-  userToBeUpdated: User = new User("","","","",false,new Project(0,"",""));
+  userToBeUpdated: User = new User("","","","",false,new Project(0,"","",true));
   updateUser : boolean = false;
   isSuccessful = false;
   isSignUpFailed = false;
@@ -80,7 +80,7 @@ export class UserComponent implements OnInit{
   }
 
   updateUserCancel(): void{
-    this.userToBeUpdated = new User("","","","",false,new Project(0,"",""));
+    this.userToBeUpdated = new User("","","","",false,new Project(0,"","",true));
     this.updateUser = false;
     this.isSuccessful = false;
     this.isSignUpFailed = false;
