@@ -1,0 +1,107 @@
+<div class="col-md-12">
+    <div class="card card-container">
+
+        <button class="btn btn-primary btn-block" *ngIf="!perMonth" (click)="switchFilter()">Filtrar por mês</button>
+        <button class="btn btn-primary btn-block" *ngIf="perMonth" (click)="switchFilter()">Filtrar por ano</button>
+
+
+      <div
+        name="form"
+        novalidate
+      >
+
+
+        <div class="custom-select">
+              <label for="username">Nome de utilizador</label>
+              <select
+                type="text"
+                [(ngModel)]="selectedUser"
+          
+                class="form-control"
+                name="username"
+              >
+              <option *ngFor="let user of users; let i = index" [ngValue]="user">{{user.username}}</option>
+              </select>
+              <br>
+          
+            <br>
+          
+        </div>
+
+        
+        <div class="custom-select" *ngIf="perMonth">
+            <label for="username">Mês</label>
+            <select
+              type="text"
+              [(ngModel)]="selectedMonth"
+        
+              class="form-control"
+              name="selectedMonth"
+            >
+            <option *ngFor="let month of months; let i = index" [ngValue]="month">{{month.designation}}</option>
+            </select>
+            <br>
+        
+          <br>
+        
+      </div>
+
+        <div class="custom-select">
+              <label for="username">Ano</label>
+              <select
+                type="text"
+                [(ngModel)]="year"
+          
+                class="form-control"
+                name="year"
+              >
+              <option *ngFor="let year of years; let i = index" [ngValue]="year">{{year}}</option>
+              </select>
+              <br>
+          
+              <br>
+          
+            </div>
+    
+    
+            <br>
+            <br>
+    
+    
+      
+      
+            <div class="form-group">
+              <button class="btn btn-primary btn-block" [disabled]="!allowed()"
+              (click)="onSubmit()">Ver presenças do utilizador</button>
+            </div>
+      
+    
+          </div>
+    
+    <div *ngIf="submitted">
+        <h3 *ngIf="submittedPerMonth && submitted">Presenças do utilizador {{submittedUser}} no mês de {{submittedMonth}} de {{submittedYear}}</h3>
+        <h3 *ngIf="!submittedPerMonth && submitted">Presenças do utilizador {{submittedUser}} no ano de {{submittedYear}}</h3>
+    
+        <table>
+            <thead>
+                <tr>
+    
+                    <th>Dia</th>
+                    <th>Estado</th>
+    
+    
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let presence of userPresences">
+                    <td>{{presence.date}}</td>
+                    <td>{{presence.status}}</td>
+                </tr>
+                <!-- Add more rows as needed -->
+            </tbody>
+    </table>
+    </div>
+      
+    
+        </div>
+      </div>
