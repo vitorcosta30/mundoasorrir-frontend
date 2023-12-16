@@ -22,6 +22,9 @@ import { AttendanceSheetComponent } from './components/attendance/attendance-she
 import { GroupListComponent } from './components/user-group/group-list/group-list.component';
 import { GroupDetailsComponent } from './components/user-group/group-details/group-details.component';
 import { CreateProjectComponent } from './components/project/create-project/create-project.component';
+import { ListProjectsComponent } from './components/project/list-projects/list-projects.component';
+import { GetPresencesByUserComponent } from './components/attendance/get-presences-by-user/get-presences-by-user.component';
+import { GetUsersOnVacationInProjectComponent } from './components/project/get-users-on-vacation-in-project/get-users-on-vacation-in-project.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent  },
@@ -45,9 +48,14 @@ const routes: Routes = [
   { path: 'groups/:id', component: GroupDetailsComponent, canActivate: [AuthGuard]  },
 
   { path: 'createProject', component: CreateProjectComponent, canActivate: [AuthGuard]  },
+  { path: 'listProjects', component: ListProjectsComponent, canActivate: [AuthGuard]  },
 
 
   { path: 'markPresences', component: AttendanceComponent, canActivate: [AuthGuard]  },
+
+  { path: 'listPresencesByUser', component: GetPresencesByUserComponent, canActivate: [AuthGuard]  },
+
+  { path: 'getUsersOnVacationInProject', component: GetUsersOnVacationInProjectComponent, canActivate: [AuthGuard]  },
 
 
 

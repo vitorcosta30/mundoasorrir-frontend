@@ -24,10 +24,12 @@
         </div>
 
 
-        <div class="dropdown" *ngIf="isAllowed('createProject')">
+        <div class="dropdown" *ngIf="isAllowed('listProjects')">
           <button class="dropbtn">Projetos</button>
           <div class="dropdown-content">
             <a href="/createProject" class="nav-link" (click)="check()" *ngIf="isAllowed('createProject')" routerLink="createProject">Criar projeto</a>
+            <a href="/listProjects" class="nav-link" (click)="check()" *ngIf="isAllowed('listProjects')" routerLink="listProjects">Listar projetos</a>
+            <a href="/getUsersOnVacationInProject" class="nav-link" (click)="check()" *ngIf="isAllowed('getUsersOnVacationInProject')" routerLink="getUsersOnVacationInProject">Utilizadores de ferias por projeto</a>
 
           
           
@@ -40,7 +42,8 @@
             <a href="/markPresences" class="nav-link" (click)="check()" *ngIf="isAllowed('markPresences')" routerLink="markPresences">Marcar presenças</a>
             <a href="/attendanceSheet" class="nav-link" (click)="check()" *ngIf="isAllowed('attendanceSheet')" routerLink="attendanceSheet">Folha de presenças</a>
 
-          
+            <a href="/listPresencesByUser" class="nav-link" (click)="check()" *ngIf="isAllowed('listPresencesByUser')" routerLink="listPresencesByUser">Ver presenças por utilizador</a>
+
           
           </div>
         </div>

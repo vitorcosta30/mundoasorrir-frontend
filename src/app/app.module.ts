@@ -43,6 +43,8 @@ import { GroupDetailsComponent } from './components/user-group/group-details/gro
 import { AttendanceSheetComponent } from './components/attendance/attendance-sheet/attendance-sheet.component';
 import { CreateProjectComponent } from './components/project/create-project/create-project.component';
 import { ListProjectsComponent } from './components/project/list-projects/list-projects.component';
+import { GetPresencesByUserComponent } from './components/attendance/get-presences-by-user/get-presences-by-user.component';
+import { GetUsersOnVacationInProjectComponent } from './components/project/get-users-on-vacation-in-project/get-users-on-vacation-in-project.component';
 const materialModules = [
   MatCardModule,
   MatToolbarModule,
@@ -79,6 +81,8 @@ registerLocaleData(localePt);
     AttendanceSheetComponent,
     CreateProjectComponent,
     ListProjectsComponent,
+    GetPresencesByUserComponent,
+    GetUsersOnVacationInProjectComponent,
 
 
   ],
