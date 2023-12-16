@@ -1,0 +1,103 @@
+<div class="col-md-12">
+    <div class="card card-container">
+
+
+      <div
+        name="form"
+        novalidate
+      >
+
+
+        <div class="custom-select">
+              <label for="username">Projeto</label>
+              <select
+                type="text"
+                [(ngModel)]="selectedProject"
+          
+                class="form-control"
+                name="username"
+              >
+              <option *ngFor="let project of projects; let i = index" [ngValue]="project">{{project.designation}} em {{project.location}}</option>
+              </select>
+              <br>
+          
+            <br>
+          
+        </div>
+
+        
+        <div class="custom-select">
+            <label for="username">Mês</label>
+            <select
+              type="text"
+              [(ngModel)]="selectedMonth"
+        
+              class="form-control"
+              name="selectedMonth"
+            >
+            <option *ngFor="let month of months; let i = index" [ngValue]="month">{{month.designation}}</option>
+            </select>
+            <br>
+        
+          <br>
+        
+      </div>
+
+        <div class="custom-select">
+              <label for="username">Ano</label>
+              <select
+                type="text"
+                [(ngModel)]="year"
+          
+                class="form-control"
+                name="year"
+              >
+              <option *ngFor="let year of years; let i = index" [ngValue]="year">{{year}}</option>
+              </select>
+              <br>
+          
+              <br>
+          
+            </div>
+    
+    
+            <br>
+            <br>
+    
+    
+      
+      
+            <div class="form-group">
+              <button class="btn btn-primary btn-block" [disabled]="!allowed()"
+              (click)="onSubmit()">Ver utilizadores de férias</button>
+            </div>
+      
+    
+          </div>
+    
+    <div *ngIf="submitted">
+        <h3 *ngIf="submitted">Utilizadores de férias no projeto {{submittedProject.designation}} em {{submittedProject.location}} no mês de {{submittedMonth}} de {{submittedYear}}</h3>    
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>username</th>
+                    <th>Email</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of users">
+                    <td>{{user.id}}</td>
+                    <td>{{user.username}}</td>
+                    <td>{{user.email}}</td>
+                    <td> <a href="/users/{{user.username}}" >Agenda</a></td>
+                </tr>
+                <!-- Add more rows as needed -->
+            </tbody>
+    </table>
+    </div>
+      
+    
+</div>
+</div>
