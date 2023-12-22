@@ -5,6 +5,7 @@ import { AuthService } from './services/auth/auth.service';
 import { SystemEventService } from './systemEvent/systemEvent.service';
 import { RoleAuth } from './auth/role-auth.component';
 import {Location} from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -26,7 +27,9 @@ export class AppComponent {
     private storageService: StorageService,
     private authService: AuthService,
     private systemEventService: SystemEventService,
-    private roleAuth: RoleAuth
+    private roleAuth: RoleAuth,
+    private router: Router,
+
     
   ) {}
 
@@ -64,8 +67,12 @@ export class AppComponent {
         })
 
       }else{
+
         this.isLoggedIn = false;
+
         this.storageService.clean();
+        this.router.navigate(['/login'], { });
+
       }  
     })
   }
