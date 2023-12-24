@@ -35,7 +35,6 @@ import { CreateUserGroupComponent } from './components/user-group/create-user-gr
 import { EventDetailsComponent } from './components/calendar/event-details/event-details.component';
 import { VacationComponent } from './components/vacation/vacation/vacation.component';
 import { PendingVacationRequestsComponent } from './components/vacation/pending-vacation-requests/pending-vacation-requests.component';
-import { FileDisplayComponent } from './components/file/file-display/file-display.component';
 import { ActiveVacationsComponent } from './components/vacation/active-vacations/active-vacations.component';
 import { ListFilesComponent } from './components/file/list-files/list-files.component';
 import { GroupListComponent } from './components/user-group/group-list/group-list.component';
@@ -73,7 +72,6 @@ registerLocaleData(localePt);
     EventDetailsComponent,
     VacationComponent,
     PendingVacationRequestsComponent,
-    FileDisplayComponent,
     ActiveVacationsComponent,
     ListFilesComponent,
     GroupListComponent,

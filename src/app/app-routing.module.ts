@@ -14,7 +14,6 @@ import { CreateUserGroupComponent } from './components/user-group/create-user-gr
 import { EventDetailsComponent } from './components/calendar/event-details/event-details.component';
 import { VacationComponent } from './components/vacation/vacation/vacation.component';
 import { PendingVacationRequestsComponent } from './components/vacation/pending-vacation-requests/pending-vacation-requests.component';
-import { FileDisplayComponent } from './components/file/file-display/file-display.component';
 import { ActiveVacationsComponent } from './components/vacation/active-vacations/active-vacations.component';
 import { AttendanceComponent } from './components/attendance/attendance/attendance.component';
 import { ListFilesComponent } from './components/file/list-files/list-files.component';
@@ -40,7 +39,6 @@ const routes: Routes = [
   { path: 'createUserGroup', component: CreateUserGroupComponent, canActivate: [AuthGuard]  },
   { path: 'createVacationRequest', component: VacationComponent, canActivate: [AuthGuard]  },
   { path: 'pendingVacationRequests', component: PendingVacationRequestsComponent, canActivate: [AuthGuard]  },
-  { path: 'files/:id', component: FileDisplayComponent, canActivate: [AuthGuard]  },
   { path: 'activeVacations', component: ActiveVacationsComponent, canActivate: [AuthGuard]  },
   { path: 'myFiles', component: ListFilesComponent, canActivate: [AuthGuard]  },
   { path: 'attendanceSheet', component: AttendanceSheetComponent, canActivate: [AuthGuard]  },
