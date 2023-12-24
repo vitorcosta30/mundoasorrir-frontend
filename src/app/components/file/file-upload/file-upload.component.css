@@ -14,21 +14,37 @@
   height: 100%;
   left: 0px;
   top: 0px;
+
 }
 
 .mat-toolbar-single-row {
   height: auto !important;
-  background: transparent;
-  padding: 0;
+
+  display: inline-block;
+  background-color: #3498db;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
 }
+
+.mat-toolbar-single-row:hover {
+    background-color: #77a8c9;
+}
+
+
 
 .mat-toolbar-single-row button {
   width: 100px;
+
+
 }
 
 .mat-form-field {
   width: 100%;
 }
+
+
 
 .mat-mdc-form-field {
   display: block;
@@ -116,6 +132,7 @@ button:disabled {
 }
 
 .card {
+  text-align: center;
   background-color: #f7f7f7;
   padding: 20px 25px 30px;
   margin: 0 auto 25px;

@@ -1,5 +1,7 @@
 <div class="col-md-12">
     <div class="card card-container">
+      <h2>Ver presenças por utilizador</h2>
+
 
         <button class="btn btn-primary btn-block" *ngIf="!perMonth" (click)="switchFilter()">Filtrar por mês</button>
         <button class="btn btn-primary btn-block" *ngIf="perMonth" (click)="switchFilter()">Filtrar por ano</button>
@@ -9,6 +11,8 @@
         name="form"
         novalidate
       >
+      
+
 
 
         <div class="custom-select">
