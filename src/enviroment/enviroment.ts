@@ -2,7 +2,7 @@ import { Month } from "src/app/models/month.model";
 
 export const environment = {
     production: false,
-    apiURL: "http://192.168.1.100:9000/api/",
+    apiURL: "http://192.168.1.101:9000/api/",
     months: [
       new Month(1,"Janeiro"),
       new Month(2,"Fevereiro"),

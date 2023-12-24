@@ -55,6 +55,7 @@ export class GetPresencesByUserComponent implements OnInit {
   getPresencesMonth(){
     this.userService.getPresencesMonth(this.selectedUser.username ,this.year,this.selectedMonth.id).subscribe(res => {
       this.userPresences = res
+      this.userPresences.sort((a,b) => (new Date(a.date)< new Date(b.date) ? -1 : 1 ))
       this.submittedMonth = this.selectedMonth.designation
       this.submittedUser = this.selectedUser.username
       this.submittedYear = this.year
@@ -69,6 +70,8 @@ export class GetPresencesByUserComponent implements OnInit {
   getPresencesYear(){
     this.userService.getPresencesYear(this.selectedUser.username,this.year).subscribe(res => {
       this.userPresences = res
+      this.userPresences.sort((a,b) => (new Date(a.date)< new Date(b.date) ? -1 : 1 ))
+
       this.submittedUser = this.selectedUser.username
       this.submittedYear = this.year
       this.submittedPerMonth = false
