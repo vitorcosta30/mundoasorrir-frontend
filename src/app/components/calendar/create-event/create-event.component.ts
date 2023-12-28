@@ -8,6 +8,7 @@ import { UserGroup } from '../../user-group/create-user-group/user-group.model';
 import { EventType } from '../../../models/event-type.model';
 import { CalendarService } from '../../../services/calendar/calendar.service';
 import { EventModel } from '../../../models/event.model';
+import { retry } from 'rxjs';
 @Component({
   selector: 'app-create-event',
   templateUrl: './create-event.component.html',
@@ -36,6 +37,21 @@ export class CreateEventComponent implements  OnInit {
     this.getEventTypes();
 
 
+  }
+  isAllowed(): boolean{
+    return this.areDatesGood() && this.eventTypeGood();
+
+  }
+  areDatesGood(): boolean{
+    return this.startDate  < this.endDate;
+  }
+  eventTypeGood(): boolean{
+    for(var i = 0; i< this.availableEventTypes.length;i++){
+      if(this.availableEventTypes[i].name == this.eventType){
+        return true;
+      }
+    }
+    return false;
   }
 
   getUsers(): void{
