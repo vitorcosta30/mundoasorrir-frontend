@@ -49,7 +49,10 @@
   
   
         <div class="form-group">
-          <button class="btn btn-primary btn-block">Criar pedido</button>
+          <button [disabled]="!areDatesGood()" class="btn btn-primary btn-block">Criar pedido</button>
+        </div>
+        <div class="alert alert-warning" *ngIf="!areDatesGood()">
+          Data de fim tem de ser depois de data de inicio!
         </div>
   
         <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">

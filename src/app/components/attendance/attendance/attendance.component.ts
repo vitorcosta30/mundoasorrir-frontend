@@ -28,6 +28,10 @@ export class AttendanceComponent {
       );
 
   }
+
+  isDateGood(): boolean{
+    return this.date.getDay() == 0 || this.date.getDay() == 6;
+  }
   isAbsent(username: string): void{
     this.vacationService.isAbsent(this.date.toString(),username).subscribe(res =>{
       this.getUnmarkedPresences();

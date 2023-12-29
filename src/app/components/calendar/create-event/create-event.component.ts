@@ -38,7 +38,7 @@ export class CreateEventComponent implements  OnInit {
 
 
   }
-  isAllowed(): boolean{
+  validated(): boolean{
     return this.areDatesGood() && this.eventTypeGood();
 
   }

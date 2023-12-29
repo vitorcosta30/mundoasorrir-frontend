@@ -144,7 +144,14 @@
 
 
       <div class="form-group">
-        <button (click)="onSubmit()" class="btn btn-primary btn-block">Criar Evento</button>
+        <button (click)="onSubmit()" [disabled]="!validated()"        class="btn btn-primary btn-block">Criar Evento</button>
+      </div>
+      <div class="alert alert-warning" *ngIf="!areDatesGood()">
+        Data de fim tem de ser depois de data de inicio!
+      </div>
+      <br>
+      <div class="alert alert-warning" *ngIf="!eventTypeGood()">
+        Tem de definir um tipo de evento!
       </div>
 
       <div class="alert alert-warning" *ngIf="isSignUpFailed">

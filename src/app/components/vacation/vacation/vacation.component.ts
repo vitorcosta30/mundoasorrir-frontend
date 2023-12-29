@@ -19,6 +19,10 @@ export class VacationComponent {
 
   constructor(private vacationService: VacationService) { }
 
+  areDatesGood(): boolean{
+    return this.startDate  < this.endDate;
+  }
+
 
 
 

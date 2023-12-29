@@ -66,3 +66,9 @@ select:focus {
   box-shadow: 0 0 8px rgba(52, 152, 219, 0.5); /* Box shadow on focus */
 }
 
+button:disabled {
+  background-color: #dddddd; /* Change the background color */
+  color: #666666; /* Change the text color */
+  cursor: not-allowed; /* Change the cursor */
+  /* Add any other styles you want for the disabled state */
+}
