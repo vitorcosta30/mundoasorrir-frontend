@@ -5,7 +5,7 @@ import { AuthService } from './services/auth/auth.service';
 import { SystemEventService } from './systemEvent/systemEvent.service';
 import { RoleAuth } from './auth/role-auth.component';
 import {Location} from '@angular/common';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -29,6 +29,7 @@ export class AppComponent {
     private systemEventService: SystemEventService,
     private roleAuth: RoleAuth,
     private router: Router,
+    private route: ActivatedRoute
 
     
   ) {}
@@ -64,7 +65,16 @@ export class AppComponent {
           const user = this.storageService.getUser();
           this.username = user.username;
           this.roles = user.roles;
+          if (this.route.snapshot.queryParams['returnUrl']) {
+            this.router.navigate([this.route.snapshot.queryParamMap.get('returnUrl')], { });
+  
+          }
         })
+        
+
+        
+
+
 
       }else{
 
