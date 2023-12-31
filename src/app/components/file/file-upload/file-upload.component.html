@@ -97,6 +97,10 @@ Upload
 <div class="alert alert-success" *ngIf="isSuccessful">
   Ficheiro foi partilhado com sucesso!
 </div>
+
+<div class="alert alert-warning" *ngIf="!fileTooLarge()">
+  Ficheiro é demasiado grande!
+</div>
 <div *ngIf="message" class="message">
   {{ message }}
 </div>

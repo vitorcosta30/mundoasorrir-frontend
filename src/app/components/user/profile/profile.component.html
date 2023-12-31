@@ -80,14 +80,14 @@
   <div class="alert alert-success" *ngIf="isSuccessfulPassword">
     Password atualizada com sucesso!
   </div>
-  <div class="alert alert-success" *ngIf="!minimumSize()">
+  <div class="alert alert-warning" *ngIf="!minimumSize()">
     Nova password deve ter mais de 4 caracters!!
   </div>
-  <div class="alert alert-success" *ngIf="!passwordsCoincide()">
+  <div class="alert alert-warning" *ngIf="!passwordsCoincide()">
     Nova passwqord e repetição não coincidem!!
   </div>
 
-  <div class="alert alert-success" *ngIf="!newOldDiff()">
+  <div class="alert alert-warning" *ngIf="!newOldDiff()">
     Nova password não pode ser igual à antiga!
   </div>
       </div>

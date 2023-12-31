@@ -15,3 +15,7 @@ html {
 button {
     cursor: pointer;
 }
+
+.alert-warning{
+    color: red;
+}

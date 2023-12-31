@@ -58,7 +58,12 @@ export class FileUploadComponent implements OnInit {
 
 
   uploadAvailable(): boolean{
-    return this.currentFile.size < this.uploadInfo.maxSizeBytes && this.currentFile.size > 0
+    return this.fileTooLarge() && this.currentFile.size > 0
+  }
+
+  fileTooLarge(): boolean{
+    return this.currentFile.size < this.uploadInfo.maxSizeBytes;
+
   }
   getMaxUploadSize(): void{
     this.uploadService.getMaxUpload().subscribe(res => this.uploadInfo = res)
