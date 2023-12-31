@@ -10,6 +10,7 @@ import { AttendanceService } from '../../../services/attendance/attendance.servi
 export class AttendanceComponent {
   usersInDay : User [] = [];
   date = new Date();
+  message = "";
 
 
   constructor(private vacationService :  AttendanceService){
@@ -23,6 +24,7 @@ export class AttendanceComponent {
   }
   isPresent(username: string): void{
     this.vacationService.isPresent(this.date.toString(),username).subscribe(res =>{
+      this.message = res.message;
       this.getUnmarkedPresences();
     }
       );
@@ -30,10 +32,12 @@ export class AttendanceComponent {
   }
 
   isDateGood(): boolean{
-    return this.date.getDay() == 0 || this.date.getDay() == 6;
+    let day = this.date.getDay();
+    return day == 0 || day == 6;
   }
   isAbsent(username: string): void{
     this.vacationService.isAbsent(this.date.toString(),username).subscribe(res =>{
+      this.message = res.message;
       this.getUnmarkedPresences();
     }
       );
