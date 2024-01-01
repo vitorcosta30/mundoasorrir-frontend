@@ -29,7 +29,7 @@ export class AppComponent {
     private systemEventService: SystemEventService,
     private roleAuth: RoleAuth,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
 
     
   ) {}
@@ -60,26 +60,20 @@ export class AppComponent {
     this.authService.isLoggedIn().subscribe(res => {
       if(res == true){
         this.isLoggedIn = true;
-        this.authService.getUser().subscribe(usr => {
-          this.storageService.saveUser(usr);
-          const user = this.storageService.getUser();
-          this.username = user.username;
-          this.roles = user.roles;
-          if (this.route.snapshot.queryParams['returnUrl']) {
-            this.router.navigate([this.route.snapshot.queryParamMap.get('returnUrl')], { });
-  
-          }
+        this.authService.refreshToken().subscribe(res =>{
+          this.authService.getUser().subscribe(usr => {
+            this.storageService.saveUser(usr);
+            const user = this.storageService.getUser();
+            this.username = user.username;
+            this.roles = user.roles;
+            if (this.route.snapshot.queryParams['returnUrl']) {
+              this.router.navigate([this.route.snapshot.queryParamMap.get('returnUrl')], { });
+    
+            }
+          })
         })
-        
-
-        
-
-
-
       }else{
-
         this.isLoggedIn = false;
-
         this.storageService.clean();
         this.router.navigate(['/login'], { });
 
