@@ -86,3 +86,12 @@ button {
   display: inline-block;
   transition-duration: 0.4s;
 }
+
+
+button:disabled {
+  background-color: #dddddd; /* Change the background color */
+  color: #666666; /* Change the text color */
+  cursor: not-allowed; /* Change the cursor */
+  /* Add any other styles you want for the disabled state */
+}
+

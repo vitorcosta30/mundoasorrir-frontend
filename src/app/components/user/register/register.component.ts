@@ -9,12 +9,11 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  form: any = {
-    username: null,
-    email: null,
-    password: null,
-    role: null
-  };
+    username = ""
+    email = ""
+    password = ""
+    role =  ""
+  
   isSuccessful = false;
   isSignUpFailed = false;
   errorMessage = '';
@@ -29,6 +28,50 @@ export class RegisterComponent implements OnInit {
     this.getRoles();
 
 
+  }
+  validUsername(): boolean{
+    return this.usernameIsNull() || this.usernameIsTooSmall() || this.usernameIsTooBig()
+  }
+  validPassword(): boolean{
+    return this.passwordIsNull() && this.passwordIsTooSmall()
+
+
+  }
+  passwordIsNull(): boolean{
+    return this.password.length == 0
+  }
+
+  emailIsNull(): boolean{
+    return this.email.length == 0
+  }  
+  usernameIsNull(): boolean{
+    return this.username.length == 0
+  }
+  passwordIsTooSmall(): boolean{
+    return this.password.length < 6
+
+    
+  }
+  isEmail(): boolean{
+    return this.email.match( /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/) == null
+  }
+  emailIsGood(): boolean{
+    return this.emailIsNull() || this.isEmail()
+  }
+
+  roleIsGood(): boolean{
+    return this.role.length == 0
+  }
+
+  usernameIsTooSmall(): boolean{
+    return this.username.length < 4
+  }
+  usernameIsTooBig(): boolean{
+    return this.username.length >= 20
+  }
+
+  goodToSubmit(): boolean {
+    return this.roleIsGood() || this.emailIsGood() || this.validUsername() || this.emailIsGood() || this.validPassword()
   }
   initDropdownSettings() {
     this.roleNameDropdownSettings = {
@@ -45,9 +88,8 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(): void {
-    const { username, email, password, role } = this.form;
 
-    this.authService.register(username, email, password, role).subscribe({
+    this.authService.register(this.username, this.email, this.password, this.role).subscribe({
       next: data => {
         console.log(data);
         this.isSuccessful = true;

@@ -5,7 +5,7 @@
     <form
       *ngIf="!isSuccessful"
       name="form"
-      (ngSubmit)="f.form.valid && onSubmit()"
+      (ngSubmit)="onSubmit()"
       #f="ngForm"
       novalidate
     >
@@ -15,19 +15,17 @@
           type="text"
           class="form-control"
           name="username"
-          [(ngModel)]="form.username"
+          [(ngModel)]="username"
           required
           minlength="3"
           maxlength="20"
-          #username="ngModel"
-          [ngClass]="{ 'is-invalid': f.submitted && username.errors }"
         />
-        <div class="invalid-feedback" *ngIf="username.errors && f.submitted">
-          <div *ngIf="username.errors['required']">Username é obrigatorio</div>
-          <div *ngIf="username.errors['minlength']">
+        <div class="invalid-feedback" *ngIf="validUsername()">
+          <div *ngIf="usernameIsNull()">Username é obrigatorio</div>
+          <div *ngIf="usernameIsTooSmall()">
             Username tem de ter pelo menos 3 caraters
           </div>
-          <div *ngIf="username.errors['maxlength']">
+          <div *ngIf="usernameIsTooBig()">
             Username não pode ter mais de 20 caraters
           </div>
         </div>
@@ -38,15 +36,13 @@
           type="email"
           class="form-control"
           name="email"
-          [(ngModel)]="form.email"
+          [(ngModel)]="email"
           required
           email
-          #email="ngModel"
-          [ngClass]="{ 'is-invalid': f.submitted && email.errors }"
         />
-        <div class="invalid-feedback" *ngIf="email.errors && f.submitted">
-          <div *ngIf="email.errors['required']">Email é obrigatorio</div>
-          <div *ngIf="email.errors['email']">
+        <div class="invalid-feedback" *ngIf="emailIsGood()">
+          <div *ngIf="emailIsNull()">Email é obrigatorio</div>
+          <div *ngIf="isEmail()">
             Tem de ser um endereço de email valido!!
           </div>
         </div>
@@ -57,15 +53,13 @@
           type="password"
           class="form-control"
           name="role"
-          [(ngModel)]="form.password"
+          [(ngModel)]="password"
           required
           minlength="6"
-          #password="ngModel"
-          [ngClass]="{ 'is-invalid': f.submitted && password.errors }"
         />
-        <div class="invalid-feedback" *ngIf="password.errors && f.submitted">
-          <div *ngIf="password.errors['required']">Password é obrigatoria</div>
-          <div *ngIf="password.errors['minlength']">
+        <div class="invalid-feedback" *ngIf="validPassword()">
+          <div *ngIf="passwordIsNull()">Password é obrigatoria</div>
+          <div *ngIf="passwordIsTooSmall()">
             Password tem de ter pelo menos 6 caraters
           </div>
         </div>
@@ -79,16 +73,15 @@
         <select name="roles" id="roles"          type="text"
         class="form-control"
         name="role"
-        [(ngModel)]="form.role"
+        [(ngModel)]="role"
         required
         minlength="6"
-        #role="ngModel"
-        [ngClass]="{ 'is-invalid': f.submitted && role.errors }">
+        >
           <option *ngFor="let role of roles" value="{{role.name}}">{{role.name}}</option>
 
         </select>
-        <div class="invalid-feedback" *ngIf="role.errors && f.submitted">
-          <div *ngIf="role.errors['required']">Cargo não pode ser vazio</div>
+        <div class="invalid-feedback" *ngIf="roleIsGood()">
+          <div *ngIf="roleIsGood()">Cargo não pode ser vazio</div>
 
         </div>
       </div>
@@ -96,10 +89,11 @@
 
 
       <div class="form-group">
-        <button class="btn btn-primary btn-block">Registar</button>
+        <button [disabled]="goodToSubmit()"
+        class="btn btn-primary btn-block">Registar</button>
       </div>
 
-      <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+      <div class="alert alert-warning" *ngIf="isSignUpFailed">
         Registo falhou!<br />{{ errorMessage }}
       </div>
     </form>
