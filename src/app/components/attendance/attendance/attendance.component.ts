@@ -15,9 +15,7 @@ export class AttendanceComponent {
 
   constructor(private vacationService :  AttendanceService){
   }
-  ngOnInit(): void {
-    this.getUnmarkedPresences();
-  }
+
 
   getUnmarkedPresences(): void {
     this.vacationService.getUnmarkedRequest(this.date.toString()).subscribe(res => this.usersInDay =  res);

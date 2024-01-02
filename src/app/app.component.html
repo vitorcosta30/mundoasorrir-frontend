@@ -51,7 +51,7 @@
 
 
 
-        <div class="dropdown" *ngIf="isAllowed('createUserGroup')">
+        <div class="dropdown" *ngIf="isAllowed('groups')">
         <button class="dropbtn">Grupos</button>
           <div class="dropdown-content">
             <a href="/createUserGroup" class="nav-link" (click)="check()" *ngIf="isAllowed('createUserGroup')" routerLink="createUserGroup">Criar grupo</a>
