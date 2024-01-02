@@ -35,7 +35,7 @@ export class AppComponent {
   ) {}
 
   ngOnInit(): void {
-    this.check();
+    this.newInstance();
 
     /*
 
@@ -79,6 +79,31 @@ export class AppComponent {
 
       }  
     })
+  }
+
+  newInstance(): void{
+    this.authService.isLoggedIn().subscribe(res => {
+      if(res == true){
+        this.isLoggedIn = true;
+          this.authService.getUser().subscribe(usr => {
+            this.storageService.saveUser(usr);
+            const user = this.storageService.getUser();
+            this.username = user.username;
+            this.roles = user.roles;
+            if (this.route.snapshot.queryParams['returnUrl']) {
+              this.router.navigate([this.route.snapshot.queryParamMap.get('returnUrl')], { });
+    
+            }
+          })
+        
+      }else{
+        this.isLoggedIn = false;
+        this.storageService.clean();
+        this.router.navigate(['/login'], { });
+
+      }  
+    })
+
   }
   isManager(): boolean{
     return this.roles.includes('MANAGER');
