@@ -1,4 +1,11 @@
-  <div class="profile-container">
+  
+    <div class="profile-container" *ngIf="!isSucess">
+      <h1>Utilizador não existe</h1>
+
+  
+  </div>
+  
+  <div class="profile-container" *ngIf="isSucess">
     <h1>Perfil do utilizador</h1>
     <p><strong>Username:</strong> {{user?.username}}</p>
     <p><strong>Email:</strong> <a href="mailto:{{user?.email}}">{{user?.email}}</a></p>
@@ -12,7 +19,7 @@
 <br>
 <br>
 
-<div class="user">
+<div class="user" *ngIf="isSucess">
 
 <div class="user-list">
     <h2>Agenda do utilizador {{user?.username}}</h2>
@@ -29,7 +36,7 @@
 
 
 
-<div class="row text-center">
+<div class="row text-center"  *ngIf="isSucess">
   <div class="col-md-4">
     <div class="btn-group">
       <table>
@@ -108,7 +115,7 @@
 
 </div>
 <br />
-<div [ngSwitch]="view">
+<div [ngSwitch]="view"  *ngIf="isSucess">
   <mwl-calendar-month-view
     *ngSwitchCase="'month'"
     [locale]="locale"

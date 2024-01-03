@@ -20,6 +20,7 @@ export class UserDetailsComponent implements OnInit{
   CalendarView = CalendarView;
   viewDate: Date = new Date();
   events: CalendarEvent[] = [];
+  isSucess: boolean = true;
   constructor (private userService : UserService,
     private activatedRoute: ActivatedRoute,
     private calendarService : CalendarService,
@@ -28,7 +29,6 @@ export class UserDetailsComponent implements OnInit{
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
       const username = params['username'];
-      this.getEvents(username);
       this.getUser(username);
 
     })
@@ -70,7 +70,16 @@ export class UserDetailsComponent implements OnInit{
 
 
   getUser(username : string): void {
-    this.userService.getUser(username).subscribe(res => this.user = res);
+    this.userService.getUser(username).subscribe({
+      next: res => {
+         this.user = res
+         this.isSucess = true;
+         this.getEvents(username);
+      },
+      error: err => {
+        this.isSucess = false
+      }
+    });
 
   }
   setView(view: CalendarView) {
