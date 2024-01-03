@@ -23,6 +23,7 @@ export class GroupDetailsComponent implements OnInit {
   usersNotInGroup: User[] = [];
 
   id: string = ""
+  isSucess: boolean = true;
 
   constructor(private groupService : GroupService,
     private activatedRoute: ActivatedRoute,
@@ -34,10 +35,7 @@ export class GroupDetailsComponent implements OnInit {
     this.activatedRoute.params.subscribe(params => {
       this.id = params['id'];
       this.getGroup();
-      this.getUsersInGroup();
-      if(this.isAllowed()){
-        this.getUsersNotInGroup();
-      }
+
     })
   }
   isAllowed(): boolean{
@@ -45,7 +43,20 @@ export class GroupDetailsComponent implements OnInit {
   }
 
   getGroup(): void {
-    this.groupService.getGroup(this.id).subscribe(res => this.group = res)
+    this.groupService.getGroup(this.id).subscribe({
+      next: res => {
+        this.group = res
+        this.isSucess = true
+        this.getUsersInGroup();
+        if(this.isAllowed()){
+          this.getUsersNotInGroup();
+        }
+      },
+      error: err => {
+        this.isSucess = false
+
+      }
+    })
   }
 
   getUsersInGroup(): void {
