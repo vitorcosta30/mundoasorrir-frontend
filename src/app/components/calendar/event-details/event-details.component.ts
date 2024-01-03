@@ -17,6 +17,7 @@ export class EventDetailsComponent implements OnInit{
   dateFormat: string = "d/M/yyyy"
   headerColour : string = "#007BFF"
   type: string = "Evento"
+  isSucess: boolean = true;
 
   constructor(private calendarService : CalendarService,
     private activatedRoute: ActivatedRoute,
@@ -25,7 +26,6 @@ export class EventDetailsComponent implements OnInit{
     this.activatedRoute.params.subscribe(params => {
       const id = params['id'];
       this.getEvent(id);
-      this.getEnrolledUsers(id);
     })
   }
   setDateFormat(): void{
@@ -50,11 +50,20 @@ export class EventDetailsComponent implements OnInit{
   }
 
   getEvent(id: string): void {
-    this.calendarService.getEventDetails(id).subscribe(res => {
+    this.calendarService.getEventDetails(id).subscribe({
+      next: res => {
+      this.isSucess = true
       this.event = res
+      this.getEnrolledUsers(id);
+
       this.setDateFormat();
 
-    })
+      },
+      error: err => {
+        this.isSucess = false
+
+      }
+  })
   }
 
   getEnrolledUsers(id: string): void {

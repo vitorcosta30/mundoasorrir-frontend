@@ -1,7 +1,12 @@
 
 <br>
 <br>
-<div class="event-details">
+<div class="profile-container" *ngIf="!isSucess">
+    <h1>Evento não existe</h1>
+
+
+</div>
+<div class="event-details" *ngIf="isSucess">
     <div class="event-header" [style.background-color]="headerColour">
         <h1>{{type}}</h1>
     </div>
@@ -21,7 +26,7 @@
     </div>
 </div>
 
-<div class="user-list">
+<div class="user-list" *ngIf="isSucess">
     <h2>Lista de utilizadores envolvidos</h2>
 
 
