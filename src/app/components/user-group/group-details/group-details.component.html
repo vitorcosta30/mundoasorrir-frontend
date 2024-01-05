@@ -17,6 +17,8 @@
                 <label for="group">Utilizador:</label>
                 <select id="group" name="group"       [(ngModel)]="userToBeAdded" value="{{userToBeAdded}}"
                 required>
+                <option  value=""></option>
+
                     <option *ngFor="let user of usersNotInGroup" value="{{user.username}}">{{user.username}}</option>
                 </select>
             </div>
