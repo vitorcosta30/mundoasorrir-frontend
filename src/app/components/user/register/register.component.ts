@@ -33,7 +33,7 @@ export class RegisterComponent implements OnInit {
     return this.usernameIsNull() || this.usernameIsTooSmall() || this.usernameIsTooBig()
   }
   validPassword(): boolean{
-    return this.passwordIsNull() && this.passwordIsTooSmall()
+    return this.passwordIsNull() || this.passwordIsTooSmall()
 
 
   }
