@@ -14,9 +14,7 @@ export class AttendanceSheetComponent {
 
   constructor(private attendanceService :  AttendanceService){
   }
-  ngOnInit(): void {
-    this.getAttendanceSheet();
-  }
+
 
   getAttendanceSheet(): void {
     this.attendanceService.getAttendanceSheet(this.date.toString()).subscribe(res => this.attendanceInDay =  res);
