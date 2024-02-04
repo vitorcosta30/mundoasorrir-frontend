@@ -30,7 +30,7 @@ export class EventDetailsComponent implements OnInit{
   }
   setDateFormat(): void{
     if(this.event?.type == 'REUNIÃO'){
-      this.dateFormat = "d/M/yyyy HH:MM"
+      this.dateFormat = "d/M/yyyy HH:mm"
       this.headerColour = colors.blue.primary;
       this.type = "Reunião";
     }
